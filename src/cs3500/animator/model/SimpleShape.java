@@ -1,5 +1,7 @@
 package cs3500.animator.model;
 
+import java.awt.Color;
+
 /**
  * Represents an abstract version of a simple shape.
  */

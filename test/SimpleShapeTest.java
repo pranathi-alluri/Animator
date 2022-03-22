@@ -1,6 +1,6 @@
 import org.junit.Test;
 
-import cs3500.animator.model.Color;
+import java.awt.Color;
 import cs3500.animator.model.Shape;
 import cs3500.animator.model.ShapeType;
 import cs3500.animator.model.SimpleShapeFactory;
@@ -14,11 +14,10 @@ public abstract class SimpleShapeTest {
 
   protected ShapeType type;
 
-
   @Test(expected = IllegalArgumentException.class)
   public void testNullName() {
     Shape shape = SimpleShapeFactory.getShape(type, null, 20, 20,
-            new Color(0, 0, 0), 20, 20);
+            new Color(20, 20, 20), 20, 20);
   }
 
   @Test(expected = IllegalArgumentException.class)

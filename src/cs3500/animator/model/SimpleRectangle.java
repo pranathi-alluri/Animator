@@ -1,5 +1,7 @@
 package cs3500.animator.model;
 
+import java.awt.Color;
+
 /**
  * Represents an immutable rectangle in an animation.
  */
