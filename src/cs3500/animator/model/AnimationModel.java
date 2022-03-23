@@ -38,14 +38,16 @@ public interface AnimationModel {
 
   /**
    * Removes one Keyframe from the model, if keyframe is not in the model
-   * throws an IllegalArgumentException.
+   * throws an IllegalArgumentException. If the keyframe removed was the last one of that shape in
+   * the model, this removes the empty list left behind.
    * @param keyframe the Keyframe to remove from the model
    */
   void removeKeyframe(Keyframe keyframe);
 
   /**
    * Removes one Keyframe from the model using its name and time as identifiers,
-   * if keyframe is not in the model throws an IllegalArgumentException.
+   * if keyframe is not in the model throws an IllegalArgumentException. If the keyframe removed
+   * was the last one of that shape in the model, this removes the empty list left behind.
    * @param shapeName the name of the shape in the keyframe to remove
    * @param time the time of the keyframe to remove
    */

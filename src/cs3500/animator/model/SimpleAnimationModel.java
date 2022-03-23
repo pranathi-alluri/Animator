@@ -96,7 +96,7 @@ public class SimpleAnimationModel implements AnimationModel {
           if (keyframes.get(i).getTime() == keyframe.getTime()) {
             keyframes.set(i, keyframe);
           } else if (keyframes.get(i).getTime() < keyframe.getTime() && keyframes.get(i + 1).getTime() > keyframe.getTime()) {
-            keyframes.add(i+1, keyframe);
+            keyframes.add(i + 1, keyframe);
           }
         }
         if (keyframes.get(keyframes.size() - 1).getTime() == keyframe.getTime()) {
@@ -106,7 +106,7 @@ public class SimpleAnimationModel implements AnimationModel {
         }
       }
     }
-    if(!keyframeAdded) {
+    if (!keyframeAdded) {
       ArrayList<Keyframe> keyframes = new ArrayList<>();
       keyframes.add(keyframe);
       allKeyframes.add(keyframes);
@@ -115,24 +115,27 @@ public class SimpleAnimationModel implements AnimationModel {
 
   /**
    * Removes one Keyframe from the model, if keyframe is not in the model
-   * throws an IllegalArgumentException.
+   * throws an IllegalArgumentException. If the keyframe removed was the last one of that shape in
+   * the model, this removes the empty list left behind.
    *
    * @param keyframe the Keyframe to remove from the model
    */
   @Override
   public void removeKeyframe(Keyframe keyframe) {
     boolean keyframeRemoved = false;
-    for(ArrayList<Keyframe> keyframes : allKeyframes) {
+    for (ArrayList<Keyframe> keyframes : allKeyframes) {
       keyframeRemoved = keyframeRemoved || keyframes.remove(keyframe);
     }
-    if(!keyframeRemoved) {
+    allKeyframes.remove(new ArrayList<Keyframe>());
+    if (!keyframeRemoved) {
       throw new IllegalArgumentException("Animation does not contain keyframe");
     }
   }
 
   /**
    * Removes one Keyframe from the model using its name and time as identifiers,
-   * if keyframe is not in the model throws an IllegalArgumentException.
+   * if keyframe is not in the model throws an IllegalArgumentException. If the keyframe removed
+   * was the last one of that shape in the model, this removes the empty list left behind.
    *
    * @param shapeName the name of the shape in the keyframe to remove
    * @param time      the time of the keyframe to remove
@@ -140,17 +143,19 @@ public class SimpleAnimationModel implements AnimationModel {
   @Override
   public void removeKeyframe(String shapeName, int time) {
     boolean keyframeRemoved = false;
-    for(ArrayList<Keyframe> keyframes : allKeyframes) {
+    for (ArrayList<Keyframe> keyframes : allKeyframes) {
       if (keyframes.get(0).getShape().getName().equals(shapeName)) {
-        for(Keyframe keyframe : keyframes) {
-          if(keyframe.getTime() == time) {
-            keyframes.remove(keyframe);
+        for (int i = 0; i < keyframes.size(); i++) {
+          if (keyframes.get(i).getTime() == time) {
+            keyframes.remove(i);
             keyframeRemoved = true;
+            break;
           }
         }
       }
     }
-    if(!keyframeRemoved) {
+    allKeyframes.remove(new ArrayList<Keyframe>());
+    if (!keyframeRemoved) {
       throw new IllegalArgumentException("Animation does not contain keyframe");
     }
   }
@@ -163,14 +168,14 @@ public class SimpleAnimationModel implements AnimationModel {
   @Override
   public void removeShape(String shapeName) {
     boolean shapeRemoved = false;
-    for(int i = 0; i < allKeyframes.size(); i++) {
-      if(allKeyframes.get(i).get(0).getShape().getName().equals(shapeName)) {
+    for (int i = 0; i < allKeyframes.size(); i++) {
+      if (allKeyframes.get(i).get(0).getShape().getName().equals(shapeName)) {
         allKeyframes.remove(i);
         shapeRemoved = true;
         break;
       }
     }
-    if(!shapeRemoved) {
+    if (!shapeRemoved) {
       throw new IllegalArgumentException("Animation does not contain shape");
     }
   }
