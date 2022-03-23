@@ -27,7 +27,7 @@ public class SimpleAnimationModelTest {
   private final Keyframe kf13;
   private final Keyframe kf21;
   private final ArrayList<ArrayList<Keyframe>> allKeyframes;
-  private final SimpleAnimationModel sam;
+  private SimpleAnimationModel sam;
 
   public SimpleAnimationModelTest() {
     this.redSquare = new SimpleRectangle("morphing rectangle", 20, 20, new Color(100, 0, 0), 20, 20);
@@ -48,17 +48,45 @@ public class SimpleAnimationModelTest {
     allKeyframes.add(morphingRectangle);
     allKeyframes.add(blueCircle);
     this.sam = new SimpleAnimationModel();
+    this.sam.addKeyframe(kf11);
+    this.sam.addKeyframe(kf13);
+    this.sam.addKeyframe(kf21);
+    this.sam.addKeyframe(kf12);
   }
 
+  @Test
+  public void testGetAllShapesBeforeAnyAdded() {
+    ArrayList<Shape> shapesAtTime = new ArrayList<>();
+    assertEquals(this.sam.getAllShapesAtTime(5), shapesAtTime);
+  }
 
-  /*
-  Tests needed
-  removing the last keyframe from a shape should also remove the empty list from the animation, some tests work assuming this is not the case
-  getAllShapesAtTime
-   */
+  @Test
+  public void testGetAllShapesAtTimeOfKeyframe() {
+    ArrayList<Shape> shapesAtTime = new ArrayList<>();
+    shapesAtTime.add(redSquare);
+    assertEquals(this.sam.getAllShapesAtTime(10), shapesAtTime);
+  }
+
+  @Test
+  public void testGetAllShapesInterpolate() {
+    ArrayList<Shape> shapesAtTime = new ArrayList<>();
+    Shape interpolatedRectangle = new SimpleRectangle("morphing rectangle", 25, 25, new Color(50, 50, 0), 30, 15);
+    shapesAtTime.add(interpolatedRectangle);
+    shapesAtTime.add(blueCircle);
+    assertEquals(this.sam.getAllShapesAtTime(20), shapesAtTime);
+  }
+
+  @Test
+  public void testGetAllShapesAfterAnimations() {
+    ArrayList<Shape> shapesAtTime = new ArrayList<>();
+    shapesAtTime.add(greenSquare);
+    shapesAtTime.add(blueCircle);
+    assertEquals(this.sam.getAllShapesAtTime(50), shapesAtTime);
+  }
 
   @Test
   public void testAddFirstKeyframe() {
+    this.sam = new SimpleAnimationModel();
     this.sam.addKeyframe(kf11);
     ArrayList<Keyframe> morphingRectangle = new ArrayList<>();
     morphingRectangle.add(kf11);
@@ -67,6 +95,7 @@ public class SimpleAnimationModelTest {
 
   @Test
   public void testAddSecondKeyframe() {
+    this.sam = new SimpleAnimationModel();
     this.sam.addKeyframe(kf11);
     this.sam.addKeyframe(kf13);
     ArrayList<Keyframe> morphingRectangle = new ArrayList<>();
@@ -77,6 +106,7 @@ public class SimpleAnimationModelTest {
 
   @Test
   public void testAddThirdKeyframe() {
+    this.sam = new SimpleAnimationModel();
     this.sam.addKeyframe(kf11);
     this.sam.addKeyframe(kf13);
     this.sam.addKeyframe(kf21);
@@ -93,6 +123,7 @@ public class SimpleAnimationModelTest {
 
   @Test
   public void testAddFourthKeyframe() {
+    this.sam = new SimpleAnimationModel();
     this.sam.addKeyframe(kf11);
     this.sam.addKeyframe(kf13);
     this.sam.addKeyframe(kf21);
@@ -102,6 +133,7 @@ public class SimpleAnimationModelTest {
 
   @Test
   public void testAddKeyframeReorder() {
+    this.sam = new SimpleAnimationModel();
     this.sam.addKeyframe(kf13);
     this.sam.addKeyframe(kf21);
     this.sam.addKeyframe(kf12);
@@ -111,11 +143,6 @@ public class SimpleAnimationModelTest {
 
   @Test
   public void testRemoveKeyframe11() {
-    this.sam.addKeyframe(kf13);
-    this.sam.addKeyframe(kf21);
-    this.sam.addKeyframe(kf12);
-    this.sam.addKeyframe(kf11);
-    assertEquals(this.sam.getAllKeyframes(), allKeyframes);
     this.sam.removeKeyframe(kf11);
     allKeyframes.get(0).remove(0);
     assertEquals(this.sam.getAllKeyframes(), allKeyframes);
@@ -123,11 +150,6 @@ public class SimpleAnimationModelTest {
 
   @Test
   public void testRemoveKeyframe12() {
-    this.sam.addKeyframe(kf13);
-    this.sam.addKeyframe(kf21);
-    this.sam.addKeyframe(kf12);
-    this.sam.addKeyframe(kf11);
-    assertEquals(this.sam.getAllKeyframes(), allKeyframes);
     this.sam.removeKeyframe(kf12);
     allKeyframes.get(0).remove(1);
     assertEquals(this.sam.getAllKeyframes(), allKeyframes);
@@ -135,11 +157,6 @@ public class SimpleAnimationModelTest {
 
   @Test
   public void testRemoveKeyframe13() {
-    this.sam.addKeyframe(kf13);
-    this.sam.addKeyframe(kf21);
-    this.sam.addKeyframe(kf12);
-    this.sam.addKeyframe(kf11);
-    assertEquals(this.sam.getAllKeyframes(), allKeyframes);
     this.sam.removeKeyframe(kf13);
     allKeyframes.get(0).remove(2);
     assertEquals(this.sam.getAllKeyframes(), allKeyframes);
@@ -147,46 +164,71 @@ public class SimpleAnimationModelTest {
 
   @Test
   public void testRemoveKeyframe21() {
-    this.sam.addKeyframe(kf13);
-    this.sam.addKeyframe(kf21);
-    this.sam.addKeyframe(kf12);
-    this.sam.addKeyframe(kf11);
-    assertEquals(this.sam.getAllKeyframes(), allKeyframes);
     this.sam.removeKeyframe(kf21);
-    allKeyframes.get(1).remove(0);
+    allKeyframes.remove(1);
     assertEquals(this.sam.getAllKeyframes(), allKeyframes);
   }
 
   @Test(expected = IllegalArgumentException.class)
   public void testRemoveKeyframeNotInAnimation() {
-    this.sam.addKeyframe(kf13);
-    this.sam.addKeyframe(kf21);
+    this.sam.removeKeyframe(kf11);
     this.sam.removeKeyframe(kf11);
   }
 
   @Test
   public void testRemoveMultipleKeyframes() {
-    this.sam.addKeyframe(kf13);
-    this.sam.addKeyframe(kf21);
-    this.sam.addKeyframe(kf12);
-    this.sam.addKeyframe(kf11);
-    assertEquals(this.sam.getAllKeyframes(), this.allKeyframes);
     this.sam.removeKeyframe(kf21);
     this.sam.removeKeyframe(kf12);
-    allKeyframes.get(1).remove(0);
+    allKeyframes.remove(1);
     allKeyframes.get(0).remove(1);
     assertEquals(this.sam.getAllKeyframes(), allKeyframes);
   }
 
-  // test removeKeyframe(shapename, time)                                                               ...
+  @Test
+  public void testRemoveShapeNameTime11() {
+    this.sam.removeKeyframe("morphing rectangle", 10);
+    allKeyframes.get(0).remove(0);
+    assertEquals(this.sam.getAllKeyframes(), allKeyframes);
+  }
+
+  @Test
+  public void testRemoveShapeNameTime12() {
+    this.sam.removeKeyframe("morphing rectangle", 30);
+    allKeyframes.get(0).remove(1);
+    assertEquals(this.sam.getAllKeyframes(), allKeyframes);
+  }
+
+  @Test
+  public void testRemoveShapeNameTime13() {
+    this.sam.removeKeyframe("morphing rectangle", 40);
+    allKeyframes.get(0).remove(2);
+    assertEquals(this.sam.getAllKeyframes(), allKeyframes);
+  }
+
+  @Test
+  public void testRemoveShapeNameTime21() {
+    this.sam.removeKeyframe("blue circle", 20);
+    allKeyframes.remove(1);
+    assertEquals(this.sam.getAllKeyframes(), allKeyframes);
+  }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void testRemoveShapeNameTimeNotInAnimation() {
+    this.sam.removeKeyframe("morphing rectangle", 10);
+    this.sam.removeKeyframe("morphing rectangle", 10);
+  }
+
+  @Test
+  public void testRemoveMultipleShapeNameTime() {
+    this.sam.removeKeyframe("blue circle", 20);
+    this.sam.removeKeyframe("morphing rectangle", 30);
+    allKeyframes.remove(1);
+    allKeyframes.get(0).remove(1);
+    assertEquals(this.sam.getAllKeyframes(), allKeyframes);
+  }
 
   @Test
   public void testRemoveShape1() {
-    this.sam.addKeyframe(kf13);
-    this.sam.addKeyframe(kf12);
-    this.sam.addKeyframe(kf21);
-    this.sam.addKeyframe(kf11);
-    assertEquals(this.sam.getAllKeyframes(), this.allKeyframes);
     this.sam.removeShape("morphing rectangle");
     this.allKeyframes.remove(0);
     assertEquals(this.sam.getAllKeyframes(), this.allKeyframes);
@@ -194,11 +236,6 @@ public class SimpleAnimationModelTest {
 
   @Test
   public void testRemoveShape2() {
-    this.sam.addKeyframe(kf13);
-    this.sam.addKeyframe(kf12);
-    this.sam.addKeyframe(kf21);
-    this.sam.addKeyframe(kf11);
-    assertEquals(this.sam.getAllKeyframes(), this.allKeyframes);
     this.sam.removeShape("blue circle");
     this.allKeyframes.remove(1);
     assertEquals(this.sam.getAllKeyframes(), this.allKeyframes);
