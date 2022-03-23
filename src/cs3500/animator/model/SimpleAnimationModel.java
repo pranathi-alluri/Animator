@@ -88,14 +88,15 @@ public class SimpleAnimationModel implements AnimationModel {
     for (ArrayList<Keyframe> keyframes : allKeyframes) {
       if (keyframes.get(0).getShape().getName().equals(keyframe.getShape().getName())) {
         keyframeAdded = true;
-        if (keyframes.get(0).getTime() < keyframe.getTime()) {
+        if (keyframes.get(0).getTime() > keyframe.getTime()) {
           keyframes.add(0, keyframe);
         }
-        for (int i = 0; i < keyframes.size() - 2; i++) {
+        int keyframesSize = keyframes.size();
+        for (int i = 0; i < keyframesSize - 1; i++) {
           if (keyframes.get(i).getTime() == keyframe.getTime()) {
             keyframes.set(i, keyframe);
           } else if (keyframes.get(i).getTime() < keyframe.getTime() && keyframes.get(i + 1).getTime() > keyframe.getTime()) {
-            keyframes.add(i, keyframe);
+            keyframes.add(i+1, keyframe);
           }
         }
         if (keyframes.get(keyframes.size() - 1).getTime() == keyframe.getTime()) {
