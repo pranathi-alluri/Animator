@@ -53,6 +53,7 @@ public class SimpleAnimationModelTest {
 
   /*
   Tests needed
+  removing the last keyframe from a shape should also remove the empty list from the animation, some tests work assuming this is not the case
   getAllShapesAtTime
    */
 
@@ -66,7 +67,6 @@ public class SimpleAnimationModelTest {
 
   @Test
   public void testAddSecondKeyframe() {
-
     this.sam.addKeyframe(kf11);
     this.sam.addKeyframe(kf13);
     ArrayList<Keyframe> morphingRectangle = new ArrayList<>();
@@ -97,16 +97,7 @@ public class SimpleAnimationModelTest {
     this.sam.addKeyframe(kf13);
     this.sam.addKeyframe(kf21);
     this.sam.addKeyframe(kf12);
-    ArrayList<Keyframe> morphingRectangle = new ArrayList<>();
-    morphingRectangle.add(kf11);
-    morphingRectangle.add(kf12);
-    morphingRectangle.add(kf13);
-    ArrayList<Keyframe> blueCircle = new ArrayList<>();
-    blueCircle.add(kf21);
-    ArrayList<ArrayList<Keyframe>> allKeyframes1 = new ArrayList<>();
-    allKeyframes1.add(morphingRectangle);
-    allKeyframes1.add(blueCircle);
-    assertEquals(this.sam.getAllKeyframes(), allKeyframes1);
+    assertEquals(this.sam.getAllKeyframes(), allKeyframes);
   }
 
   @Test
@@ -115,15 +106,103 @@ public class SimpleAnimationModelTest {
     this.sam.addKeyframe(kf21);
     this.sam.addKeyframe(kf12);
     this.sam.addKeyframe(kf11);
-    ArrayList<Keyframe> morphingRectangle = new ArrayList<>();
-    morphingRectangle.add(kf11);
-    morphingRectangle.add(kf12);
-    morphingRectangle.add(kf13);
-    ArrayList<Keyframe> blueCircle = new ArrayList<>();
-    blueCircle.add(kf21);
-    ArrayList<ArrayList<Keyframe>> allKeyframes1 = new ArrayList<>();
-    allKeyframes1.add(morphingRectangle);
-    allKeyframes1.add(blueCircle);
-    assertEquals(this.sam.getAllKeyframes(), allKeyframes1);
+    assertEquals(this.sam.getAllKeyframes(), allKeyframes);
   }
+
+  @Test
+  public void testRemoveKeyframe11() {
+    this.sam.addKeyframe(kf13);
+    this.sam.addKeyframe(kf21);
+    this.sam.addKeyframe(kf12);
+    this.sam.addKeyframe(kf11);
+    assertEquals(this.sam.getAllKeyframes(), allKeyframes);
+    this.sam.removeKeyframe(kf11);
+    allKeyframes.get(0).remove(0);
+    assertEquals(this.sam.getAllKeyframes(), allKeyframes);
+  }
+
+  @Test
+  public void testRemoveKeyframe12() {
+    this.sam.addKeyframe(kf13);
+    this.sam.addKeyframe(kf21);
+    this.sam.addKeyframe(kf12);
+    this.sam.addKeyframe(kf11);
+    assertEquals(this.sam.getAllKeyframes(), allKeyframes);
+    this.sam.removeKeyframe(kf12);
+    allKeyframes.get(0).remove(1);
+    assertEquals(this.sam.getAllKeyframes(), allKeyframes);
+  }
+
+  @Test
+  public void testRemoveKeyframe13() {
+    this.sam.addKeyframe(kf13);
+    this.sam.addKeyframe(kf21);
+    this.sam.addKeyframe(kf12);
+    this.sam.addKeyframe(kf11);
+    assertEquals(this.sam.getAllKeyframes(), allKeyframes);
+    this.sam.removeKeyframe(kf13);
+    allKeyframes.get(0).remove(2);
+    assertEquals(this.sam.getAllKeyframes(), allKeyframes);
+  }
+
+  @Test
+  public void testRemoveKeyframe21() {
+    this.sam.addKeyframe(kf13);
+    this.sam.addKeyframe(kf21);
+    this.sam.addKeyframe(kf12);
+    this.sam.addKeyframe(kf11);
+    assertEquals(this.sam.getAllKeyframes(), allKeyframes);
+    this.sam.removeKeyframe(kf21);
+    allKeyframes.get(1).remove(0);
+    assertEquals(this.sam.getAllKeyframes(), allKeyframes);
+  }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void testRemoveKeyframeNotInAnimation() {
+    this.sam.addKeyframe(kf13);
+    this.sam.addKeyframe(kf21);
+    this.sam.removeKeyframe(kf11);
+  }
+
+  @Test
+  public void testRemoveMultipleKeyframes() {
+    this.sam.addKeyframe(kf13);
+    this.sam.addKeyframe(kf21);
+    this.sam.addKeyframe(kf12);
+    this.sam.addKeyframe(kf11);
+    assertEquals(this.sam.getAllKeyframes(), this.allKeyframes);
+    this.sam.removeKeyframe(kf21);
+    this.sam.removeKeyframe(kf12);
+    allKeyframes.get(1).remove(0);
+    allKeyframes.get(0).remove(1);
+    assertEquals(this.sam.getAllKeyframes(), allKeyframes);
+  }
+
+  // test removeKeyframe(shapename, time)                                                               ...
+
+  @Test
+  public void testRemoveShape1() {
+    this.sam.addKeyframe(kf13);
+    this.sam.addKeyframe(kf12);
+    this.sam.addKeyframe(kf21);
+    this.sam.addKeyframe(kf11);
+    assertEquals(this.sam.getAllKeyframes(), this.allKeyframes);
+    this.sam.removeShape("morphing rectangle");
+    this.allKeyframes.remove(0);
+    assertEquals(this.sam.getAllKeyframes(), this.allKeyframes);
+  }
+
+  @Test
+  public void testRemoveShape2() {
+    this.sam.addKeyframe(kf13);
+    this.sam.addKeyframe(kf12);
+    this.sam.addKeyframe(kf21);
+    this.sam.addKeyframe(kf11);
+    assertEquals(this.sam.getAllKeyframes(), this.allKeyframes);
+    this.sam.removeShape("blue circle");
+    this.allKeyframes.remove(1);
+    assertEquals(this.sam.getAllKeyframes(), this.allKeyframes);
+  }
+
+
 }
