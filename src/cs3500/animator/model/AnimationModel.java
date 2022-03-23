@@ -1,6 +1,7 @@
 
 package cs3500.animator.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -34,4 +35,32 @@ public interface AnimationModel {
    * @param keyframe the Keyframe to add to the animation
    */
   void addKeyframe(Keyframe keyframe);
+
+  /**
+   * Removes one Keyframe from the model, if keyframe is not in the model
+   * throws an IllegalArgumentException.
+   * @param keyframe the Keyframe to remove from the model
+   */
+  void removeKeyframe(Keyframe keyframe);
+
+  /**
+   * Removes one Keyframe from the model using its name and time as identifiers,
+   * if keyframe is not in the model throws an IllegalArgumentException.
+   * @param shapeName the name of the shape in the keyframe to remove
+   * @param time the time of the keyframe to remove
+   */
+  void removeKeyframe(String shapeName, int time);
+
+  /**
+   * removes all keyframes that contain shapes of that name from the model.
+   * @param shapeName the name of the shape to remove all keyframes that contain it
+   */
+  void removeShape(String shapeName);
+
+  /**
+   * Returns a list of list of keyframes that represent the full animation.
+   * @return list of list of keyframes that represent the full animation
+   */
+  ArrayList<ArrayList<Keyframe>> getAllKeyframes();
+
 }
