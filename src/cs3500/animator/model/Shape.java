@@ -17,13 +17,13 @@ public interface Shape {
    * Gets the X position of the top left corner of this shape on the coordinate grid.
    * @return the x of this shape
    */
-  Double getX();
+  float getX();
 
   /**
    * Gets the Y position of the top left corner of this shape on the coordinate grid.
    * @return the y of this shape
    */
-  Double getY();
+  float getY();
 
   /**
    * Gets the color of this shape.
@@ -35,13 +35,13 @@ public interface Shape {
    * Gets the height of this shape in pixels.
    * @return the height of this shape
    */
-  Double getHeight();
+  float getHeight();
 
   /**
    * Gets the width of this shape in pixels.
    * @return the width of this shape
    */
-  Double getWidth();
+  float getWidth();
 
   /**
    * Gets the ShapeType of this shape.

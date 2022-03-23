@@ -54,4 +54,20 @@ public class SimpleKeyframe implements Keyframe{
   public Shape interpolate(Keyframe otherKeyframe, int interpolateTime) {
     return null;
   }
+
+  @Override
+  public boolean equals(Object o) {
+    if(o instanceof Keyframe) {
+      Keyframe other = (Keyframe) o;
+      return this.shape.equals(other.getShape()) &&
+              this.time == other.getTime();
+    } else {
+      return false;
+    }
+  }
+
+  @Override
+  public int hashCode() {
+    return this.shape.hashCode() + Integer.hashCode(this.time);
+  }
 }

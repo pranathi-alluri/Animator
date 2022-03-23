@@ -5,18 +5,18 @@ import java.awt.Color;
 /**
  * Represents an abstract version of a simple shape.
  */
-public abstract class SimpleShape implements Shape{
+public abstract class SimpleShape implements Shape {
 
   protected final String name;
-  protected final double x;
-  protected final double y;
+  protected final float x;
+  protected final float y;
   protected final Color color;
-  protected final double height;
-  protected final double width;
+  protected final float height;
+  protected final float width;
   protected ShapeType type;
 
-  public SimpleShape(String name, double x, double y,
-                         Color color, double height, double width) {
+  public SimpleShape(String name, float x, float y,
+                     Color color, float height, float width) {
     if (name == null) {
       throw new IllegalArgumentException("Name cannot be null");
     }
@@ -47,7 +47,7 @@ public abstract class SimpleShape implements Shape{
    * @return the x of this shape
    */
   @Override
-  public Double getX() {
+  public float getX() {
     return x;
   }
 
@@ -57,7 +57,7 @@ public abstract class SimpleShape implements Shape{
    * @return the y of this shape
    */
   @Override
-  public Double getY() {
+  public float getY() {
     return y;
   }
 
@@ -77,7 +77,7 @@ public abstract class SimpleShape implements Shape{
    * @return the height of this shape
    */
   @Override
-  public Double getHeight() {
+  public float getHeight() {
     return height;
   }
 
@@ -87,7 +87,7 @@ public abstract class SimpleShape implements Shape{
    * @return the width of this shape
    */
   @Override
-  public Double getWidth() {
+  public float getWidth() {
     return width;
   }
 
@@ -99,5 +99,32 @@ public abstract class SimpleShape implements Shape{
   @Override
   public ShapeType getType() {
     return type;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (o instanceof Shape) {
+      Shape other = (Shape) o;
+      return (this.name.equals(other.getName()) &&
+              this.type == other.getType() &&
+              Math.round(this.x) == Math.round(other.getX()) &&
+              Math.round(this.y) == Math.round(other.getY()) &&
+              Math.round(this.height) == Math.round(other.getHeight()) &&
+              Math.round(this.width) == Math.round(other.getWidth()) &&
+              this.color.equals(other.getColor()));
+    } else {
+      return false;
+    }
+  }
+
+  @Override
+  public int hashCode() {
+    return (this.name.hashCode() +
+            this.type.hashCode() +
+            Integer.hashCode(Math.round(this.x)) +
+            Integer.hashCode(Math.round(this.y)) +
+            Integer.hashCode(Math.round(this.height)) +
+            Integer.hashCode(Math.round(this.width)) +
+            this.color.hashCode());
   }
 }

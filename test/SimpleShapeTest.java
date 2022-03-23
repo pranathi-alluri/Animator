@@ -6,6 +6,9 @@ import cs3500.animator.model.ShapeType;
 import cs3500.animator.model.SimpleShapeFactory;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Abstract testing class for SimpleShapes
@@ -75,4 +78,46 @@ public abstract class SimpleShapeTest {
     assertEquals(shape.getType(), type);
   }
 
+  @Test
+  public void testNotEqualsShape() {
+    Shape shape1 = SimpleShapeFactory.getShape(type, "red square", 20, 20,
+            new Color(255, 0, 0), 20, 50);
+    Shape shape2 = SimpleShapeFactory.getShape(type, "green square", 20, 20,
+            new Color(0, 255, 0), 20, 50);
+    assertFalse(shape1.equals(shape2));
+  }
+
+  @Test
+  public void testNotEqualsNotShape() {
+    Shape shape1 = SimpleShapeFactory.getShape(type, "red square", 20, 20,
+            new Color(255, 0, 0), 20, 50);
+    assertFalse(shape1.equals("shape2"));
+  }
+
+  @Test
+  public void testEquals() {
+    Shape shape1 = SimpleShapeFactory.getShape(type, "red square", 20, 20,
+            new Color(255, 0, 0), 20, 50);
+    Shape shape2 = SimpleShapeFactory.getShape(type, "red square", 20, 20,
+            new Color(255, 0, 0), 20, 50);
+    assertEquals(shape1, shape2);
+  }
+
+  @Test
+  public void testDifferentHashcode() {
+    Shape shape1 = SimpleShapeFactory.getShape(type, "red square", 20, 20,
+            new Color(255, 0, 0), 20, 50);
+    Shape shape2 = SimpleShapeFactory.getShape(type, "green square", 20, 20,
+            new Color(0, 255, 0), 20, 50);
+    assertNotEquals(shape1.hashCode(), shape2.hashCode());
+  }
+
+  @Test
+  public void testSameHashcode() {
+    Shape shape1 = SimpleShapeFactory.getShape(type, "red square", 20, 20,
+            new Color(255, 0, 0), 20, 50);
+    Shape shape2 = SimpleShapeFactory.getShape(type, "red square", 20, 20,
+            new Color(255, 0, 0), 20, 50);
+    assertEquals(shape1.hashCode(), shape2.hashCode());
+  }
 }

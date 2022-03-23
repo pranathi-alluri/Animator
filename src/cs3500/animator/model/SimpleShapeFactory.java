@@ -17,8 +17,8 @@ public class SimpleShapeFactory {
    * @param width width of the shape in pixels
    * @return Freshly constructed shape
    */
-  public static Shape getShape(ShapeType type, String name, double x, double y,
-                               Color color, double height, double width) {
+  public static Shape getShape(ShapeType type, String name, float x, float y,
+                               Color color, float height, float width) {
     if(type == ShapeType.OVAL) {
       return new SimpleOval(name, x, y, color, height, width);
     } else if(type == ShapeType.RECTANGLE) {
