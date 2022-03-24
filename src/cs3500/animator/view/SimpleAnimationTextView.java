@@ -2,7 +2,6 @@ package cs3500.animator.view;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import cs3500.animator.model.AnimationModel;
@@ -12,7 +11,7 @@ import cs3500.animator.model.Shape;
 /**
  * Represents a user-friendly view of the animation by converting it to text.
  */
-public class SimpleAnimationTextView implements SimpleAnimationView{
+public class SimpleAnimationTextView implements SimpleAnimationView {
   private final AnimationModel model;
 
 
@@ -38,9 +37,9 @@ public class SimpleAnimationTextView implements SimpleAnimationView{
     Map<String, Shape> allShapes = new HashMap<>();
     String animation = "";
 
-    for(ArrayList<Keyframe> keyframes: m.getAllKeyframes()) {
-      for(Keyframe k : keyframes) {
-        if(allShapes.containsKey(k.getShape().getName())){
+    for (ArrayList<Keyframe> keyframes : m.getAllKeyframes()) {
+      for (Keyframe k : keyframes) {
+        if (allShapes.containsKey(k.getShape().getName())) {
           continue;
         } else {
           allShapes.put(k.getShape().getName(), k.getShape());
@@ -48,21 +47,21 @@ public class SimpleAnimationTextView implements SimpleAnimationView{
       }
     }
 
-    for(Shape shape : allShapes.values()) {
-     animation = animation + shape.toString() + "\n";
+    for (Shape shape : allShapes.values()) {
+      animation = animation + shape.toString() + "\n";
     }
 
     animation = animation + "\n";
 
-    for(ArrayList<Keyframe> keyframes: m.getAllKeyframes()) {
-        for (int i = 0; i < keyframes.size() - 1; i++) {
-          Keyframe next = keyframes.get(i + 1);
-          animation = animation + keyframes.get(i).getDescription(next) + "\n";
-        }
-        animation = animation + "\n";
+    for (ArrayList<Keyframe> keyframes : m.getAllKeyframes()) {
+      for (int i = 0; i < keyframes.size() - 1; i++) {
+        Keyframe next = keyframes.get(i + 1);
+        animation = animation + keyframes.get(i).getDescription(next) + "\n";
+      }
+      animation = animation + "\n";
     }
 
     return animation;
-    }
   }
+}
 

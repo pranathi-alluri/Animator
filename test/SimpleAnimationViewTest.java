@@ -1,7 +1,7 @@
-import org.junit.Before;
+
 import org.junit.Test;
 
-import java.awt.*;
+import java.awt.Color;
 import java.util.ArrayList;
 
 import cs3500.animator.model.Keyframe;
@@ -21,40 +21,28 @@ import static org.junit.Assert.assertEquals;
 
 public class SimpleAnimationViewTest {
 
-  private final Shape redSquare;
-  private final Shape greenSquare;
-  private final Shape blueCircle;
-  private final Shape blueCircle2;
-  private final Keyframe kf11;
-  private final Keyframe kf12;
-  private final Keyframe kf13;
-  private final Keyframe kf21;
-  private final Keyframe kf22;
-  private final Keyframe kf23;
-  private final ArrayList<ArrayList<Keyframe>> allKeyframes;
-  private SimpleAnimationModel sam;
-  private SimpleAnimationView sav;
+  private final SimpleAnimationView sav;
 
   /**
    * Constructor for SimpleAnimationModelTest.
    */
   public SimpleAnimationViewTest() {
-    this.redSquare = new SimpleRectangle("morphing rectangle", 20, 20,
+    Shape redSquare = new SimpleRectangle("morphing rectangle", 20, 20,
             new Color(100, 0, 0), 20, 20);
     Shape greenRectangle = new SimpleRectangle("morphing rectangle", 30, 30,
             new Color(0, 100, 0), 40, 10);
-    this.greenSquare = new SimpleRectangle("morphing rectangle", 30, 30,
+    Shape greenSquare = new SimpleRectangle("morphing rectangle", 30, 30,
             new Color(0, 100, 0), 40, 40);
-    this.blueCircle = new SimpleOval("blue circle", 50, 50,
+    Shape blueCircle1 = new SimpleOval("blue circle", 50, 50,
             new Color(0, 0, 100), 10, 10);
-    this.blueCircle2 = new SimpleOval("blue circle", 70, 60,
+    Shape blueCircle2 = new SimpleOval("blue circle", 70, 60,
             new Color(0, 0, 100), 10, 10);
-    this.kf11 = new SimpleKeyframe(redSquare, 10);
-    this.kf12 = new SimpleKeyframe(greenRectangle, 30);
-    this.kf13 = new SimpleKeyframe(greenSquare, 40);
-    this.kf21 = new SimpleKeyframe(blueCircle, 20);
-    this.kf22 = new SimpleKeyframe(blueCircle, 30);
-    this.kf23 = new SimpleKeyframe(blueCircle2, 40);
+    Keyframe kf11 = new SimpleKeyframe(redSquare, 10);
+    Keyframe kf12 = new SimpleKeyframe(greenRectangle, 30);
+    Keyframe kf13 = new SimpleKeyframe(greenSquare, 40);
+    Keyframe kf21 = new SimpleKeyframe(blueCircle1, 20);
+    Keyframe kf22 = new SimpleKeyframe(blueCircle1, 30);
+    Keyframe kf23 = new SimpleKeyframe(blueCircle2, 40);
     ArrayList<Keyframe> morphingRectangle = new ArrayList<>();
     morphingRectangle.add(kf11);
     morphingRectangle.add(kf12);
@@ -63,17 +51,17 @@ public class SimpleAnimationViewTest {
     blueCircle.add(kf21);
     blueCircle.add(kf22);
     blueCircle.add(kf23);
-    allKeyframes = new ArrayList<>();
+    ArrayList<ArrayList<Keyframe>> allKeyframes = new ArrayList<>();
     allKeyframes.add(morphingRectangle);
     allKeyframes.add(blueCircle);
-    this.sam = new SimpleAnimationModel();
-    this.sam.addKeyframe(kf11);
-    this.sam.addKeyframe(kf13);
-    this.sam.addKeyframe(kf21);
-    this.sam.addKeyframe(kf12);
-    this.sam.addKeyframe(kf22);
-    this.sam.addKeyframe(kf23);
-    this.sav = new SimpleAnimationTextView(this.sam);
+    SimpleAnimationModel sam = new SimpleAnimationModel();
+    sam.addKeyframe(kf11);
+    sam.addKeyframe(kf13);
+    sam.addKeyframe(kf21);
+    sam.addKeyframe(kf12);
+    sam.addKeyframe(kf22);
+    sam.addKeyframe(kf23);
+    this.sav = new SimpleAnimationTextView(sam);
   }
 
   @Test(expected = IllegalArgumentException.class)
