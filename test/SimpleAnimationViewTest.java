@@ -83,18 +83,24 @@ public class SimpleAnimationViewTest {
 
   @Test
   public void testToString() {
-    assertEquals("Create RECTANGLE named morphing rectangle with corner at (20.0,20.0),"
-            + "width 20.0 and height 20.0\n" +
-            "Create OVAL named blue circle with corner at (50.0,50.0), width 10.0 and height 10.0\n"
-            + "\n" + "From time 10 to 30, morphing rectangle moves from (20.0,20.0) to (30.0,30.0),"
-            + "scales from 20.0x20.0 to 10.0x40.0,  and the color changes from"
-            + "java.awt.Color[r=100,g=0,b=0] to java.awt.Color[r=100,g=0,b=0].\n"
-            + "From time 30 to 40, morphing rectangle stays put at (30.0,30.0), scales from"
-            + "10.0x40.0 to 40.0x40.0,  and the color stays java.awt.Color[r=0,g=100,b=0].\n"
-            + "\n" + "From time 20 to 30, blue circle stays put at (50.0,50.0), stays size"
-            + "10.0x10.0,  and the color stays java.awt.Color[r=0,g=0,b=100].\n"
-            + "From time 30 to 40, blue circle moves from (50.0,50.0) to (70.0,60.0), stays size"
-            + "10.0x10.0,  and the color stays java.awt.Color[r=0,g=0,b=100].", sav.toString());
+    assertEquals("Create RECTANGLE named morphing rectangle with corner at (20.0,20.0)," +
+            " width 20.0 and height 20.0\n" +
+            "Create OVAL named blue circle with corner at (50.0,50.0)," +
+            " width 10.0 and height 10.0\n" +
+            "\n" +
+            "From time 10 to 30, morphing rectangle moves from (20.0,20.0) " +
+            "to (30.0,30.0), scales from 20.0x20.0 to 10.0x40.0,  and the color " +
+            "changes from java.awt.Color[r=100,g=0,b=0] to java.awt.Color[r=100,g=0,b=0].\n" +
+            "From time 30 to 40, morphing rectangle stays put at (30.0,30.0), " +
+            "scales from 10.0x40.0 to 40.0x40.0,  " +
+            "and the color staysjava.awt.Color[r=0,g=100,b=0].\n" +
+            "\n" +
+            "From time 20 to 30, blue circle stays put at (50.0,50.0), " +
+            "stays size 10.0x10.0,  and the color staysjava.awt.Color[r=0,g=0,b=100].\n" +
+            "From time 30 to 40, blue circle moves from (50.0,50.0) to " +
+            "(70.0,60.0), stays size 10.0x10.0,  " +
+            "and the color staysjava.awt.Color[r=0,g=0,b=100].\n" +
+            "\n", sav.toString());
   }
 
 
