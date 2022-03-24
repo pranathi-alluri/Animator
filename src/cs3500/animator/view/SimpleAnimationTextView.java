@@ -1,7 +1,9 @@
 package cs3500.animator.view;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import cs3500.animator.model.AnimationModel;
 import cs3500.animator.model.Keyframe;
@@ -33,33 +35,34 @@ public class SimpleAnimationTextView implements SimpleAnimationView{
   }
 
   private String getString(AnimationModel m) {
-    List<Shape> allShapes = new ArrayList<>();
+    Map<String, Shape> allShapes = new HashMap<>();
     String animation = "";
 
     for(ArrayList<Keyframe> keyframes: m.getAllKeyframes()) {
       for(Keyframe k : keyframes) {
-        if(allShapes.contains(k.getShape())){
+        if(allShapes.containsKey(k.getShape().getName())){
           continue;
         } else {
-          allShapes.add(k.getShape());
+          allShapes.put(k.getShape().getName(), k.getShape());
         }
       }
     }
 
-    for(int i = 0; i < allShapes.size(); i++) {
-     animation = animation + allShapes.get(i).toString() + "\n";
+    for(Shape shape : allShapes.values()) {
+     animation = animation + shape.toString() + "\n";
     }
 
     animation = animation + "\n";
 
     for(ArrayList<Keyframe> keyframes: m.getAllKeyframes()) {
-      for(int i = 0; i < keyframes.size() - 1; i++) {
-        Keyframe next = keyframes.get(i+1);
-        animation = animation + keyframes.get(i).getDescription(next) + "\n";
+        for (int i = 0; i < keyframes.size() - 1; i++) {
+          Keyframe next = keyframes.get(i + 1);
+          animation = animation + keyframes.get(i).getDescription(next) + "\n";
         }
-      animation = animation + "\n";
-      }
+        animation = animation + "\n";
+    }
 
     return animation;
     }
   }
+
