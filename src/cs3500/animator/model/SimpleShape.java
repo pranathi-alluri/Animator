@@ -15,6 +15,17 @@ public abstract class SimpleShape implements Shape {
   protected final float width;
   protected ShapeType type;
 
+  /**
+   * Constructor for SimpleShape, does not instantiate ShapeType as that is done in the child
+   * constructor.
+   *
+   * @param name   the name of this shape, used as an id
+   * @param x      the x position of the top left corner of this shape
+   * @param y      the y position of the top left corner of this shape
+   * @param color  the color of this shape
+   * @param height the height of this shape in pixels
+   * @param width  the width of this shape in pixels
+   */
   public SimpleShape(String name, float x, float y,
                      Color color, float height, float width) {
     if (name == null) {
@@ -100,11 +111,11 @@ public abstract class SimpleShape implements Shape {
   public ShapeType getType() {
     return type;
   }
-  
+
   @Override
   public String toString() {
     return "Create " + this.type + " named " + this.name + " with corner at ("
-            + this.x + "," + this.y +"), width " + this.width + " and height "
+            + this.x + "," + this.y + "), width " + this.width + " and height "
             + this.height;
   }
 

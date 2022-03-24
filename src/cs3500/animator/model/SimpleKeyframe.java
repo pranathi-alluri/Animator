@@ -1,6 +1,6 @@
 package cs3500.animator.model;
 
-import java.awt.*;
+import java.awt.Color;
 
 /**
  * Represents a shape at a time in an animation.
@@ -51,7 +51,6 @@ public class SimpleKeyframe implements Keyframe {
    *                        from the other keyframe must be the same.
    * @param interpolateTime the time that the interpolated shape exists at.
    * @return The shape that exists between this keyframe and otherKeyFrame at the time
-   * interpolateTime
    */
   @Override
   public Shape interpolate(Keyframe otherKeyframe, int interpolateTime) {
@@ -60,7 +59,8 @@ public class SimpleKeyframe implements Keyframe {
     }
     if (interpolateTime < otherKeyframe.getTime() && interpolateTime < time ||
             interpolateTime > otherKeyframe.getTime() && interpolateTime > time) {
-      throw new IllegalArgumentException("interpolateTime must be between the two times of the keyframes");
+      throw new IllegalArgumentException("interpolateTime must be between the two times " +
+              "of the keyframes");
     }
     if (!(shape.getName().equals(otherKeyframe.getShape().getName()))) {
       throw new IllegalArgumentException("The shapes of both keyframes must have the same names");
@@ -68,15 +68,23 @@ public class SimpleKeyframe implements Keyframe {
     if (shape.getType() != otherKeyframe.getShape().getType()) {
       throw new IllegalArgumentException("The shapes of both keyframes must be of the same type");
     }
-    float x = interpolate(time, interpolateTime, otherKeyframe.getTime(), shape.getX(), otherKeyframe.getShape().getX());
-    float y = interpolate(time, interpolateTime, otherKeyframe.getTime(), shape.getY(), otherKeyframe.getShape().getY());
-    float height = interpolate(time, interpolateTime, otherKeyframe.getTime(), shape.getHeight(), otherKeyframe.getShape().getHeight());
-    float width = interpolate(time, interpolateTime, otherKeyframe.getTime(), shape.getWidth(), otherKeyframe.getShape().getWidth());
-    int red = (int) interpolate(time, interpolateTime, otherKeyframe.getTime(), shape.getColor().getRed(), otherKeyframe.getShape().getColor().getRed());
-    int green = (int) interpolate(time, interpolateTime, otherKeyframe.getTime(), shape.getColor().getGreen(), otherKeyframe.getShape().getColor().getGreen());
-    int blue = (int) interpolate(time, interpolateTime, otherKeyframe.getTime(), shape.getColor().getBlue(), otherKeyframe.getShape().getColor().getBlue());
+    float x = interpolate(time, interpolateTime, otherKeyframe.getTime(), shape.getX(),
+            otherKeyframe.getShape().getX());
+    float y = interpolate(time, interpolateTime, otherKeyframe.getTime(), shape.getY(),
+            otherKeyframe.getShape().getY());
+    float height = interpolate(time, interpolateTime, otherKeyframe.getTime(), shape.getHeight(),
+            otherKeyframe.getShape().getHeight());
+    float width = interpolate(time, interpolateTime, otherKeyframe.getTime(), shape.getWidth(),
+            otherKeyframe.getShape().getWidth());
+    int red = (int) interpolate(time, interpolateTime, otherKeyframe.getTime(),
+            shape.getColor().getRed(), otherKeyframe.getShape().getColor().getRed());
+    int green = (int) interpolate(time, interpolateTime, otherKeyframe.getTime(),
+            shape.getColor().getGreen(), otherKeyframe.getShape().getColor().getGreen());
+    int blue = (int) interpolate(time, interpolateTime, otherKeyframe.getTime(),
+            shape.getColor().getBlue(), otherKeyframe.getShape().getColor().getBlue());
 
-    return SimpleShapeFactory.getShape(shape.getType(), shape.getName(), x, y, new Color(red, green, blue), height, width);
+    return SimpleShapeFactory.getShape(shape.getType(), shape.getName(), x, y,
+            new Color(red, green, blue), height, width);
   }
 
   private float interpolate(float t0, float t1, float t2, float value1, float value2) {

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Represents an animation in the form of lists of Keyframes
+ * Represents an animation in the form of lists of Keyframes.
  */
 public class SimpleAnimationModel implements AnimationModel {
 
@@ -97,7 +97,8 @@ public class SimpleAnimationModel implements AnimationModel {
         for (int i = 0; i < keyframesSize - 1; i++) {
           if (keyframes.get(i).getTime() == keyframe.getTime()) {
             keyframes.set(i, keyframe);
-          } else if (keyframes.get(i).getTime() < keyframe.getTime() && keyframes.get(i + 1).getTime() > keyframe.getTime()) {
+          } else if (keyframes.get(i).getTime() < keyframe.getTime() &&
+                  keyframes.get(i + 1).getTime() > keyframe.getTime()) {
             keyframes.add(i + 1, keyframe);
           }
         }
