@@ -37,9 +37,11 @@ public class SimpleAnimationModel implements AnimationModel {
         }
       }
       if (shape == null) {
-        if (keyframes.get(keyframes.size() - 1).getTime() >= time) {
+        if (keyframes.get(keyframes.size() - 1).getTime() <= time) {
           shapesAtTime.add(keyframes.get(keyframes.size() - 1).getShape());
         }
+      } else {
+        shapesAtTime.add(shape);
       }
     }
     return shapesAtTime;
