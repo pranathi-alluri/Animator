@@ -100,6 +100,13 @@ public abstract class SimpleShape implements Shape {
   public ShapeType getType() {
     return type;
   }
+  
+  @Override
+  public String toString() {
+    return "Create " + this.type + " named " + this.name + " with corner at ("
+            + this.x + "," + this.y +"), width " + this.width + " and height "
+            + this.height;
+  }
 
   @Override
   public boolean equals(Object o) {
