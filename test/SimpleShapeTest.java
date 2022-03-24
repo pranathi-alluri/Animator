@@ -1,6 +1,7 @@
 import org.junit.Test;
 
 import java.awt.Color;
+
 import cs3500.animator.model.Shape;
 import cs3500.animator.model.ShapeType;
 import cs3500.animator.model.SimpleShapeFactory;
@@ -8,10 +9,9 @@ import cs3500.animator.model.SimpleShapeFactory;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertTrue;
 
 /**
- * Abstract testing class for SimpleShapes
+ * Abstract testing class for SimpleShapes.
  */
 public abstract class SimpleShapeTest {
 
@@ -125,6 +125,7 @@ public abstract class SimpleShapeTest {
   public void testToString() {
     Shape shape1 = SimpleShapeFactory.getShape(type, "red square", 20, 20,
             new Color(255, 0, 0), 20, 50);
-    assertEquals(shape1.toString(), "Create " + type + " named red square with corner at (20.0,20.0), width 50.0 and height 20.0");
+    assertEquals(shape1.toString(), "Create " + type + " named red square with corner at " +
+            "(20.0,20.0), width 50.0 and height 20.0");
   }
 }

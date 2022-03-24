@@ -1,6 +1,6 @@
 import org.junit.Test;
 
-import java.awt.*;
+import java.awt.Color;
 import java.util.ArrayList;
 
 import cs3500.animator.model.Keyframe;
@@ -13,13 +13,12 @@ import cs3500.animator.model.SimpleRectangle;
 import static org.junit.Assert.assertEquals;
 
 /**
- * Testing class for SimpleAnimationModel
+ * Testing class for SimpleAnimationModel.
  */
 public class SimpleAnimationModelTest {
 
 
   private final Shape redSquare;
-  private final Shape greenRectangle;
   private final Shape greenSquare;
   private final Shape blueCircle;
   private final Keyframe kf11;
@@ -29,11 +28,18 @@ public class SimpleAnimationModelTest {
   private final ArrayList<ArrayList<Keyframe>> allKeyframes;
   private SimpleAnimationModel sam;
 
+  /**
+   * Constructor for SimpleAnimationModelTest.
+   */
   public SimpleAnimationModelTest() {
-    this.redSquare = new SimpleRectangle("morphing rectangle", 20, 20, new Color(100, 0, 0), 20, 20);
-    this.greenRectangle = new SimpleRectangle("morphing rectangle", 30, 30, new Color(0, 100, 0), 40, 10);
-    this.greenSquare = new SimpleRectangle("morphing rectangle", 30, 30, new Color(0, 100, 0), 40, 40);
-    this.blueCircle = new SimpleOval("blue circle", 50, 50, new Color(0, 0, 100), 10, 10);
+    this.redSquare = new SimpleRectangle("morphing rectangle", 20, 20,
+            new Color(100, 0, 0), 20, 20);
+    Shape greenRectangle = new SimpleRectangle("morphing rectangle", 30, 30,
+            new Color(0, 100, 0), 40, 10);
+    this.greenSquare = new SimpleRectangle("morphing rectangle", 30, 30,
+            new Color(0, 100, 0), 40, 40);
+    this.blueCircle = new SimpleOval("blue circle", 50, 50,
+            new Color(0, 0, 100), 10, 10);
     this.kf11 = new SimpleKeyframe(redSquare, 10);
     this.kf12 = new SimpleKeyframe(greenRectangle, 30);
     this.kf13 = new SimpleKeyframe(greenSquare, 40);
@@ -70,7 +76,8 @@ public class SimpleAnimationModelTest {
   @Test
   public void testGetAllShapesInterpolate() {
     ArrayList<Shape> shapesAtTime = new ArrayList<>();
-    Shape interpolatedRectangle = new SimpleRectangle("morphing rectangle", 25, 25, new Color(50, 50, 0), 30, 15);
+    Shape interpolatedRectangle = new SimpleRectangle("morphing rectangle",
+            25, 25, new Color(50, 50, 0), 30, 15);
     shapesAtTime.add(interpolatedRectangle);
     shapesAtTime.add(blueCircle);
     assertEquals(this.sam.getAllShapesAtTime(20), shapesAtTime);

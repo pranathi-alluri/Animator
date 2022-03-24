@@ -101,22 +101,22 @@ public class SimpleKeyframe implements Keyframe {
     String color;
     String s = this.shape.getName();
     if (this.shape.getX() == shapeEnd.getX() && this.shape.getY() == shapeEnd.getY()) {
-      move = s + "stays put at (" + this.shape.getX() + "," + this.shape.getY() + "), ";
+      move = s + " stays put at (" + this.shape.getX() + "," + this.shape.getY() + "), ";
     } else {
-      move = s + "moves from (" + this.shape.getX() + "," + this.shape.getY() + ") to ("
+      move = s + " moves from (" + this.shape.getX() + "," + this.shape.getY() + ") to ("
               + shapeEnd.getX() + "," + shapeEnd.getY() + "), ";
     }
     if (this.shape.getWidth() == shapeEnd.getWidth()
             && this.shape.getHeight() == shapeEnd.getHeight()) {
       scale = "stays size " + this.shape.getWidth() + "x" + this.shape.getHeight() + ", ";
     } else {
-      scale = "scales from " + this.shape.getWidth() + "x" + this.shape.getHeight() + "to "
+      scale = "scales from " + this.shape.getWidth() + "x" + this.shape.getHeight() + " to "
               + shapeEnd.getWidth() + "x" + shapeEnd.getHeight() + ", ";
     }
     if (this.shape.getColor().equals(shapeEnd.getColor())) {
-      color = " and the color stays" + this.shape.getColor() + ".";
+      color = " and the color stays" + this.shape.getColor().toString() + ".";
     } else {
-      color = " and the color changes from " + this.shape.getColor() + " to "
+      color = " and the color changes from " + this.shape.getColor().toString() + " to "
               + this.shape.getColor() + ".";
     }
     return "From time " + this.time + " to " + other.getTime() + ", " + move + scale + color;
