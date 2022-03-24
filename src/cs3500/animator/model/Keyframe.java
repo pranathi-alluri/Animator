@@ -27,4 +27,11 @@ public interface Keyframe {
    * interpolateTime
    */
   Shape interpolate(Keyframe otherKeyframe, int interpolateTime);
+  
+   /**
+   * Describes the changes that are occurring between two keyframes in a readable manner.
+   * @param other the other KeyFrame representing the changed state of the animation.
+   * @return string description of model
+   */
+  String getDescription(Keyframe other);
 }
