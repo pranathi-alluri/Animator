@@ -38,3 +38,8 @@ The SimpleOval and SimpleRectangle classes both extend SimpleShape with the only
 what ShapeType they are, ShapeType.OVAL and ShapeType.RECTANGLE respectively.
 
 SimpleShapeFactory is a helper class used to use the abstract testing class SimpleShapeTest.
+
+The interface SimpleAnimationTextView defines that the text view of the animation is a user-friendly
+description of all the animations in the model.
+
+The class SimpleAnimationView implements a text description of the animation in the model.
