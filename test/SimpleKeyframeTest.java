@@ -127,4 +127,14 @@ public class SimpleKeyframeTest {
     Keyframe kf2 = new SimpleKeyframe(shape2, 40);
     assertEquals(kf1.interpolate(kf2, 10), interpolatedShape);
   }
+
+  @Test
+  public void testToString() {
+    Shape shape1 = new SimpleOval("Oval", 10, 10, new Color(0, 200, 100), 10, 10);
+    Shape shape2 = new SimpleOval("Oval", 50, 90, new Color(100, 100, 200), 10, 30);
+    Keyframe kf1 = new SimpleKeyframe(shape1, 0);
+    Keyframe kf2 = new SimpleKeyframe(shape2, 40);
+    assertEquals(kf1.getDescription(kf2), "From time 0 to 40, Ovalmoves from (10.0,10.0) to (50.0,90.0), scales from 10.0x10.0to 30.0x10.0,  and the color changes from java.awt.Color[r=0,g=200,b=100] to java.awt.Color[r=0,g=200,b=100].");
+
+  }
 }
