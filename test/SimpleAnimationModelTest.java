@@ -248,5 +248,17 @@ public class SimpleAnimationModelTest {
     assertEquals(this.sam.getAllKeyframes(), this.allKeyframes);
   }
 
+  @Test
+  public void testGetSetWidth() {
+    assertEquals(this.sam.getWidth(), 0);
+    this.sam.setWidth(100);
+    assertEquals(this.sam.getWidth(), 100);
+  }
 
+  @Test
+  public void testGetSetHeight() {
+    assertEquals(this.sam.getHeight(), 0);
+    this.sam.setHeight(200);
+    assertEquals(this.sam.getHeight(), 200);
+  }
 }

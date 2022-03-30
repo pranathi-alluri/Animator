@@ -11,9 +11,19 @@ public class SimpleAnimationModel implements AnimationModel {
   //INVARIANT: None of the lists in allKeyframes are empty
   //INVARIANT: all the keyframes in each ArrayList<Keyframe> have the same name and ShapeType
   private final ArrayList<ArrayList<Keyframe>> allKeyframes;
+  private int width;
+  private int height;
 
   public SimpleAnimationModel() {
     this.allKeyframes = new ArrayList<>();
+    this.width = 0;
+    this.height = 0;
+  }
+
+  public SimpleAnimationModel(int width, int height) {
+    this.allKeyframes = new ArrayList<>();
+    this.width = width;
+    this.height = height;
   }
 
   /**
@@ -184,6 +194,26 @@ public class SimpleAnimationModel implements AnimationModel {
   }
 
   /**
+   * Setter for width of the frame of the animation.
+   *
+   * @param width the width of the frame of the animation in pixels
+   */
+  @Override
+  public void setWidth(int width) {
+    this.width = width;
+  }
+
+  /**
+   * Setter for height of the frame of the animation.
+   *
+   * @param height the height of the frame of the animation in pixels
+   */
+  @Override
+  public void setHeight(int height) {
+    this.height = height;
+  }
+
+  /**
    * Returns a list of list of keyframes that represent the full animation.
    *
    * @return list of list of keyframes that represent the full animation
@@ -191,5 +221,25 @@ public class SimpleAnimationModel implements AnimationModel {
   @Override
   public ArrayList<ArrayList<Keyframe>> getAllKeyframes() {
     return allKeyframes;
+  }
+
+  /**
+   * Getter for width of the frame of the animation.
+   *
+   * @return the width of the frame of the animation in pixels
+   */
+  @Override
+  public int getWidth() {
+    return width;
+  }
+
+  /**
+   * Getter for height of the frame of the animation.
+   *
+   * @return the height of the frame of the animation in pixels
+   */
+  @Override
+  public int getHeight() {
+    return height;
   }
 }
