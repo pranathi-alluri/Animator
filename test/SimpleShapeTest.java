@@ -125,7 +125,7 @@ public abstract class SimpleShapeTest {
   public void testToString() {
     Shape shape1 = SimpleShapeFactory.getShape(type, "red square", 20, 20,
             new Color(255, 0, 0), 20, 50);
-    assertEquals(shape1.toString(), "Create " + type + " named red square with corner at " +
+    assertEquals(shape1.toString(), "Create " + type + " named red square with center at " +
             "(20.0,20.0), width 50.0 and height 20.0");
   }
 }

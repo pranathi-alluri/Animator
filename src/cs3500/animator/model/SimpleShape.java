@@ -53,7 +53,7 @@ public abstract class SimpleShape implements Shape {
   }
 
   /**
-   * Gets the X position of the top left corner of this shape on the coordinate grid.
+   * Gets the X position of the center of this shape on the coordinate grid.
    *
    * @return the x of this shape
    */
@@ -63,7 +63,7 @@ public abstract class SimpleShape implements Shape {
   }
 
   /**
-   * Gets the Y position of the top left corner of this shape on the coordinate grid.
+   * Gets the Y position of the center of this shape on the coordinate grid.
    *
    * @return the y of this shape
    */
@@ -114,7 +114,7 @@ public abstract class SimpleShape implements Shape {
 
   @Override
   public String toString() {
-    return "Create " + this.type + " named " + this.name + " with corner at ("
+    return "Create " + this.type + " named " + this.name + " with center at ("
             + this.x + "," + this.y + "), width " + this.width + " and height "
             + this.height;
   }

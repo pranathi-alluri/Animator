@@ -114,7 +114,7 @@ public class SimpleKeyframe implements Keyframe {
               + shapeEnd.getWidth() + "x" + shapeEnd.getHeight() + ", ";
     }
     if (this.shape.getColor().equals(shapeEnd.getColor())) {
-      color = " and the color stays" + this.shape.getColor().toString() + ".";
+      color = " and the color stays " + this.shape.getColor().toString() + ".";
     } else {
       color = " and the color changes from " + this.shape.getColor().toString() + " to "
               + this.shape.getColor() + ".";

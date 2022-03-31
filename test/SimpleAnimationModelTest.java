@@ -11,6 +11,7 @@ import cs3500.animator.model.SimpleOval;
 import cs3500.animator.model.SimpleRectangle;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 /**
  * Testing class for SimpleAnimationModel.
@@ -25,6 +26,7 @@ public class SimpleAnimationModelTest {
   private final Keyframe kf12;
   private final Keyframe kf13;
   private final Keyframe kf21;
+  private final Keyframe kf22;
   private final ArrayList<ArrayList<Keyframe>> allKeyframes;
   private SimpleAnimationModel sam;
 
@@ -44,12 +46,14 @@ public class SimpleAnimationModelTest {
     this.kf12 = new SimpleKeyframe(greenRectangle, 30);
     this.kf13 = new SimpleKeyframe(greenSquare, 40);
     this.kf21 = new SimpleKeyframe(blueCircle, 20);
+    this.kf22 = new SimpleKeyframe(blueCircle, 30);
     ArrayList<Keyframe> morphingRectangle = new ArrayList<>();
     morphingRectangle.add(kf11);
     morphingRectangle.add(kf12);
     morphingRectangle.add(kf13);
     ArrayList<Keyframe> blueCircle = new ArrayList<>();
     blueCircle.add(kf21);
+    blueCircle.add(kf22);
     allKeyframes = new ArrayList<>();
     allKeyframes.add(morphingRectangle);
     allKeyframes.add(blueCircle);
@@ -58,6 +62,7 @@ public class SimpleAnimationModelTest {
     this.sam.addKeyframe(kf13);
     this.sam.addKeyframe(kf21);
     this.sam.addKeyframe(kf12);
+    this.sam.addKeyframe(kf22);
   }
 
   @Test
@@ -86,8 +91,6 @@ public class SimpleAnimationModelTest {
   @Test
   public void testGetAllShapesAfterAnimations() {
     ArrayList<Shape> shapesAtTime = new ArrayList<>();
-    shapesAtTime.add(greenSquare);
-    shapesAtTime.add(blueCircle);
     assertEquals(this.sam.getAllShapesAtTime(50), shapesAtTime);
   }
 
@@ -132,6 +135,7 @@ public class SimpleAnimationModelTest {
   public void testAddFourthKeyframe() {
     this.sam = new SimpleAnimationModel();
     this.sam.addKeyframe(kf11);
+    this.sam.addKeyframe(kf22);
     this.sam.addKeyframe(kf13);
     this.sam.addKeyframe(kf21);
     this.sam.addKeyframe(kf12);
@@ -145,6 +149,7 @@ public class SimpleAnimationModelTest {
     this.sam.addKeyframe(kf21);
     this.sam.addKeyframe(kf12);
     this.sam.addKeyframe(kf11);
+    this.sam.addKeyframe(kf22);
     assertEquals(this.sam.getAllKeyframes(), allKeyframes);
   }
 
@@ -170,8 +175,9 @@ public class SimpleAnimationModelTest {
   }
 
   @Test
-  public void testRemoveKeyframe21() {
+  public void testRemoveKeyframe2122() {
     this.sam.removeKeyframe(kf21);
+    this.sam.removeKeyframe(kf22);
     allKeyframes.remove(1);
     assertEquals(this.sam.getAllKeyframes(), allKeyframes);
   }
@@ -186,7 +192,7 @@ public class SimpleAnimationModelTest {
   public void testRemoveMultipleKeyframes() {
     this.sam.removeKeyframe(kf21);
     this.sam.removeKeyframe(kf12);
-    allKeyframes.remove(1);
+    allKeyframes.get(1).remove(0);
     allKeyframes.get(0).remove(1);
     assertEquals(this.sam.getAllKeyframes(), allKeyframes);
   }
@@ -215,7 +221,7 @@ public class SimpleAnimationModelTest {
   @Test
   public void testRemoveShapeNameTime21() {
     this.sam.removeKeyframe("blue circle", 20);
-    allKeyframes.remove(1);
+    allKeyframes.get(1).remove(0);
     assertEquals(this.sam.getAllKeyframes(), allKeyframes);
   }
 
@@ -229,7 +235,7 @@ public class SimpleAnimationModelTest {
   public void testRemoveMultipleShapeNameTime() {
     this.sam.removeKeyframe("blue circle", 20);
     this.sam.removeKeyframe("morphing rectangle", 30);
-    allKeyframes.remove(1);
+    allKeyframes.get(1).remove(0);
     allKeyframes.get(0).remove(1);
     assertEquals(this.sam.getAllKeyframes(), allKeyframes);
   }
@@ -260,5 +266,15 @@ public class SimpleAnimationModelTest {
     assertEquals(this.sam.getHeight(), 0);
     this.sam.setHeight(200);
     assertEquals(this.sam.getHeight(), 200);
+  }
+
+  @Test
+  public void testGetShapeNotInModel() {
+    assertNull(this.sam.getAllKeyframesOfShape("Triangle"));
+  }
+
+  @Test
+  public void testGetShapeNotInModel2() {
+    assertNull(this.sam.getShapeAtTime("Triangle", 5));
   }
 }

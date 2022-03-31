@@ -14,13 +14,13 @@ public interface Shape {
   String getName();
 
   /**
-   * Gets the X position of the top left corner of this shape on the coordinate grid.
+   * Gets the X position of the center of this shape on the coordinate grid.
    * @return the x of this shape
    */
   float getX();
 
   /**
-   * Gets the Y position of the top left corner of this shape on the coordinate grid.
+   * Gets the Y position of the center of this shape on the coordinate grid.
    * @return the y of this shape
    */
   float getY();

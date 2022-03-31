@@ -1,4 +1,7 @@
 package cs3500.animator.model;
+import java.awt.*;
+import java.util.ArrayList;
+
 import cs3500.animator.io.TweenModelBuilder;
 import cs3500.animator.io.AnimationFileReader;
 
@@ -10,6 +13,13 @@ public class AnimationBuilder implements TweenModelBuilder<AnimationModel> {
     this.model = new SimpleAnimationModel();
   }
 
+  public AnimationBuilder(AnimationModel model) {
+    if(model == null) {
+      throw new IllegalArgumentException("model must not be null");
+    }
+    this.model = model;
+  }
+
   /**
    * Set the bounds of the canvas for the animation.
    *
@@ -18,7 +28,9 @@ public class AnimationBuilder implements TweenModelBuilder<AnimationModel> {
    */
   @Override
   public TweenModelBuilder<AnimationModel> setBounds(int width, int height) {
-    return null;
+    this.model.setWidth(width);
+    this.model.setHeight(height);
+    return this;
   }
 
   /**
@@ -38,7 +50,17 @@ public class AnimationBuilder implements TweenModelBuilder<AnimationModel> {
    */
   @Override
   public TweenModelBuilder<AnimationModel> addOval(String name, float cx, float cy, float xRadius, float yRadius, float red, float green, float blue, int startOfLife, int endOfLife) {
-    return null;
+    if(name == null) {
+      throw new IllegalArgumentException("name must not be null");
+    } else if (startOfLife >= endOfLife) {
+      throw new IllegalArgumentException("startOfLife must be less than endOfLife");
+    }
+    Shape oval = new SimpleOval(name, cx, cy, new Color(red, green, blue), yRadius, xRadius);
+    Keyframe keyframe1 = new SimpleKeyframe(oval, startOfLife);
+    Keyframe keyframe2 = new SimpleKeyframe(oval, endOfLife);
+    this.model.addKeyframe(keyframe1);
+    this.model.addKeyframe(keyframe2);
+    return this;
   }
 
   /**
@@ -60,7 +82,17 @@ public class AnimationBuilder implements TweenModelBuilder<AnimationModel> {
    */
   @Override
   public TweenModelBuilder<AnimationModel> addRectangle(String name, float lx, float ly, float width, float height, float red, float green, float blue, int startOfLife, int endOfLife) {
-    return null;
+    if(name == null) {
+      throw new IllegalArgumentException("name must not be null");
+    } else if (startOfLife >= endOfLife) {
+      throw new IllegalArgumentException("startOfLife must be less than endOfLife");
+    }
+    Shape rectangle = new SimpleOval(name, lx, ly, new Color(red, green, blue), height, width);
+    Keyframe keyframe1 = new SimpleKeyframe(rectangle, startOfLife);
+    Keyframe keyframe2 = new SimpleKeyframe(rectangle, endOfLife);
+    this.model.addKeyframe(keyframe1);
+    this.model.addKeyframe(keyframe2);
+    return this;
   }
 
   /**
@@ -81,7 +113,22 @@ public class AnimationBuilder implements TweenModelBuilder<AnimationModel> {
    */
   @Override
   public TweenModelBuilder<AnimationModel> addMove(String name, float moveFromX, float moveFromY, float moveToX, float moveToY, int startTime, int endTime) {
-    return null;
+    if(name == null) {
+      throw new IllegalArgumentException("name must not be null");
+    } else if (startTime >= endTime) {
+      throw new IllegalArgumentException("startTime must be less than endTime");
+    }
+    Shape startShape = model.getShapeAtTime(name, startTime);
+    Shape endShape = model.getShapeAtTime(name, endTime);
+    Shape newStartShape = SimpleShapeFactory.getShape(startShape.getType(), name, moveFromX,
+            moveFromY, startShape.getColor(), startShape.getHeight(), startShape.getWidth());
+    Shape newEndShape = SimpleShapeFactory.getShape(endShape.getType(), name, moveToX, moveToY,
+            endShape.getColor(), endShape.getHeight(), endShape.getWidth());
+    Keyframe startKeyframe = new SimpleKeyframe(newStartShape, startTime);
+    Keyframe endKeyframe = new SimpleKeyframe(newEndShape, endTime);
+    model.addKeyframe(startKeyframe);
+    model.addKeyframe(endKeyframe);
+    return this;
   }
 
   /**
@@ -100,7 +147,20 @@ public class AnimationBuilder implements TweenModelBuilder<AnimationModel> {
    */
   @Override
   public TweenModelBuilder<AnimationModel> addColorChange(String name, float oldR, float oldG, float oldB, float newR, float newG, float newB, int startTime, int endTime) {
-    return null;
+    if(name == null) {
+      throw new IllegalArgumentException("name must not be null");
+    } else if (startTime >= endTime) {
+      throw new IllegalArgumentException("startTime must be less than endTime");
+    }
+    Shape startShape = model.getShapeAtTime(name, startTime);
+    Shape endShape = model.getShapeAtTime(name, endTime);
+    Shape newStartShape = SimpleShapeFactory.getShape(startShape.getType(), name, startShape.getX(), startShape.getY(), new Color(oldR, oldG, oldB), startShape.getHeight(), startShape.getWidth());
+    Shape newEndShape = SimpleShapeFactory.getShape(endShape.getType(), name, endShape.getX(), endShape.getY(), new Color(newR, newG, newB), endShape.getHeight(), endShape.getWidth());
+    Keyframe startKeyframe = new SimpleKeyframe(newStartShape, startTime);
+    Keyframe endKeyframe = new SimpleKeyframe(newEndShape, endTime);
+    model.addKeyframe(startKeyframe);
+    model.addKeyframe(endKeyframe);
+    return this;
   }
 
   /**
@@ -118,7 +178,20 @@ public class AnimationBuilder implements TweenModelBuilder<AnimationModel> {
    */
   @Override
   public TweenModelBuilder<AnimationModel> addScaleToChange(String name, float fromSx, float fromSy, float toSx, float toSy, int startTime, int endTime) {
-    return null;
+    if(name == null) {
+      throw new IllegalArgumentException("name must not be null");
+    } else if (startTime >= endTime) {
+      throw new IllegalArgumentException("startTime must be less than endTime");
+    }
+    Shape startShape = model.getShapeAtTime(name, startTime);
+    Shape endShape = model.getShapeAtTime(name, endTime);
+    Shape newStartShape = SimpleShapeFactory.getShape(startShape.getType(), name, startShape.getX(), startShape.getY(), startShape.getColor(), fromSy, fromSx);
+    Shape newEndShape = SimpleShapeFactory.getShape(endShape.getType(), name, endShape.getX(), endShape.getY(), endShape.getColor(), toSx, toSy);
+    Keyframe startKeyframe = new SimpleKeyframe(newStartShape, startTime);
+    Keyframe endKeyframe = new SimpleKeyframe(newEndShape, endTime);
+    model.addKeyframe(startKeyframe);
+    model.addKeyframe(endKeyframe);
+    return this;
   }
 
   /**
@@ -128,7 +201,6 @@ public class AnimationBuilder implements TweenModelBuilder<AnimationModel> {
    */
   @Override
   public AnimationModel build() {
-    return null;
+    return model;
   }
-  // FILL IN HERE
 }

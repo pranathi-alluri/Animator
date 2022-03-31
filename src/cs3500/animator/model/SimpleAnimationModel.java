@@ -37,20 +37,8 @@ public class SimpleAnimationModel implements AnimationModel {
   public List<Shape> getAllShapesAtTime(int time) {
     ArrayList<Shape> shapesAtTime = new ArrayList<>();
     for (ArrayList<Keyframe> keyframes : allKeyframes) {
-      Shape shape = null;
-      for (int i = 0; i < keyframes.size() - 1; i++) {
-        if (keyframes.get(i).getTime() == time) {
-          shape = keyframes.get(i).getShape();
-          break;
-        } else if (keyframes.get(i).getTime() < time && keyframes.get(i + 1).getTime() > time) {
-          shape = keyframes.get(i).interpolate(keyframes.get(i + 1), time);
-        }
-      }
-      if (shape == null) {
-        if (keyframes.get(keyframes.size() - 1).getTime() <= time) {
-          shapesAtTime.add(keyframes.get(keyframes.size() - 1).getShape());
-        }
-      } else {
+      Shape shape = getShapeAtTime(keyframes.get(0).getShape().getName(), time);
+      if (shape != null) {
         shapesAtTime.add(shape);
       }
     }
@@ -58,7 +46,35 @@ public class SimpleAnimationModel implements AnimationModel {
   }
 
   /**
+   * Gets a shape at a specific time. If there isn't a keyframe at that time,
+   * it interpolates between the two closest keyframes.
+   * Returns null if there is no shape of that name in the animation.
+   *
+   * @param name the unique name of the shape to get
+   * @param time the time to get the shape from
+   * @return
+   */
+  @Override
+  public Shape getShapeAtTime(String name, int time) {
+    Shape shape = null;
+    if(getAllKeyframesOfShape(name) == null) {
+      return null;
+    }
+    ArrayList<Keyframe> keyframes = (ArrayList<Keyframe>) getAllKeyframesOfShape(name);
+    for (int i = 0; i < keyframes.size() - 1; i++) {
+      if (keyframes.get(i).getTime() == time) {
+        shape = keyframes.get(i).getShape();
+        break;
+      } else if (keyframes.get(i).getTime() < time && keyframes.get(i + 1).getTime() > time) {
+        shape = keyframes.get(i).interpolate(keyframes.get(i + 1), time);
+      }
+    }
+    return shape;
+  }
+
+  /**
    * Gets all the keyframes of a specific shape in the model in order of time.
+   * Returns null if there is no shape of that name in the animation.
    *
    * @param shapeName name of the shape to get all the keyframes of
    * @return all the keyframes of a specific shape in the model in order of time
@@ -73,9 +89,6 @@ public class SimpleAnimationModel implements AnimationModel {
       if (keyframes.get(0).getShape().getName().equals(shapeName)) {
         outputKeyframes = keyframes;
       }
-    }
-    if (outputKeyframes == null) {
-      throw new IllegalArgumentException("There is no shape of name shapeName in this animation");
     }
     return outputKeyframes;
   }
