@@ -123,6 +123,11 @@ public class SimpleKeyframe implements Keyframe {
   }
 
   @Override
+  public String toString() {
+    return shape.toString() + " at time: " + time;
+  }
+
+  @Override
   public boolean equals(Object o) {
     if (o instanceof Keyframe) {
       Keyframe other = (Keyframe) o;
