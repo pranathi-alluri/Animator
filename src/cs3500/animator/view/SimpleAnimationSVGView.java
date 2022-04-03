@@ -7,7 +7,7 @@ import cs3500.animator.model.Keyframe;
 import cs3500.animator.model.Shape;
 import cs3500.animator.model.ViewOnlyAnimationModel;
 
-public class SimpleAnimationSVGView extends AnimationTextViews{
+public class SimpleAnimationSVGView extends AnimationTextViews {
 
   /**
    * Constructor for Animation SVG view.
@@ -34,6 +34,7 @@ public class SimpleAnimationSVGView extends AnimationTextViews{
 
   /**
    * Converts the shape in the given keyframes to an SVG view.
+   *
    * @param k all the keyframes for a single shape
    * @return the SVG of the shape in text.
    */
@@ -56,7 +57,7 @@ public class SimpleAnimationSVGView extends AnimationTextViews{
     output.append("<" + type + " id=\"" + s.getName());
 
     switch (type) {
-      case "rect" :
+      case "rect":
         output.append("\" x=\"").append(s.getX())
                 .append("\" y=\"").append(s.getY())
                 .append("\" width=\"").append(s.getWidth())
@@ -66,7 +67,7 @@ public class SimpleAnimationSVGView extends AnimationTextViews{
                 .append(s.getColor().getBlue())
                 .append(")\" visibility=\"hidden\" >\n");
         break;
-      case "ellipse" :
+      case "ellipse":
         output.append("\" cx=\"").append(s.getX())
                 .append("\" cy=\"").append(s.getY())
                 .append("\" rx=\"").append(s.getWidth() / 2)
@@ -97,7 +98,8 @@ public class SimpleAnimationSVGView extends AnimationTextViews{
 
   /**
    * Returns the given transformation as a textual description of changes that occur to the SVG.
-   * @param k the starting keyframe.
+   *
+   * @param k    the starting keyframe.
    * @param next the next keyframe.
    * @param type the shape that is being transformed.
    * @return SVG transformations in a textual view.
@@ -107,7 +109,8 @@ public class SimpleAnimationSVGView extends AnimationTextViews{
     String begin = "<animate attributeType=\"xml\" begin=\""
             + ticksToMS(k.getTime()) + "\" dur=\""
             + ticksToMS(next.getTime() - k.getTime())
-            + "\" attributeName=\"";;
+            + "\" attributeName=\"";
+    ;
     String end = "\" fill=\"freeze\" />\n";
 
     if (k.getShape().getX() != next.getShape().getX()) {
@@ -166,6 +169,7 @@ public class SimpleAnimationSVGView extends AnimationTextViews{
 
   /**
    * Converts the given tick value to MS.
+   *
    * @param t the time of keyframe in ticks
    * @return String representation of keyframe time in ms.
    */

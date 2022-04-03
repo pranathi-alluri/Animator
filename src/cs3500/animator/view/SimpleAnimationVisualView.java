@@ -14,7 +14,7 @@ import javax.swing.ScrollPaneConstants;
 import cs3500.animator.model.ViewOnlyAnimationModel;
 
 /**
- *
+ * Represents a visual view of the animation using Javax Swing to draw the moved and shapes.
  */
 public class SimpleAnimationVisualView extends JFrame implements SimpleAnimationView {
   protected ViewOnlyAnimationModel model;
@@ -23,9 +23,10 @@ public class SimpleAnimationVisualView extends JFrame implements SimpleAnimation
   protected Timer timer;
 
   /**
+   * Constructor for the Simple animation visual view.
    *
-   * @param model
-   * @param tempo
+   * @param model the model connected to the view.
+   * @param tempo the tempo in ticks per second.
    */
   public SimpleAnimationVisualView(ViewOnlyAnimationModel model, int tempo) {
     super();
@@ -54,33 +55,35 @@ public class SimpleAnimationVisualView extends JFrame implements SimpleAnimation
 
     this.add(scroll, BorderLayout.CENTER);
     this.pack();
-    }
+  }
 
-    @Override
-  public void makeVisible(){
+  @Override
+  public void makeVisible() {
     this.setVisible(true);
 
     int time = 1000 / this.tempo;
-      ActionListener listener = new ActionListener() {
-        private int tick = 0;
-        @Override
-        public void actionPerformed(ActionEvent e) {
-         onTick(tick);
-         tick++;
-        }
-      };
-      new Timer(time, listener).start();
-    }
+    ActionListener listener = new ActionListener() {
+      private int tick = 0;
+
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        onTick(tick);
+        tick++;
+      }
+    };
+    new Timer(time, listener).start();
+  }
 
   /**
    * Draw the animation at the given tick.
+   *
    * @param tick the current tick.
    */
   private void onTick(int tick) {
     panel.setTick(tick);
     panel.revalidate();
     panel.repaint();
-    }
+  }
 
 
 }

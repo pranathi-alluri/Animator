@@ -10,6 +10,7 @@ public interface SimpleAnimationView {
 
   /**
    * Makes the view visible. There are three types of views: Textual, SVG, and visual.
+   *
    * @throws IOException if transmission to the provided data destination fails
    */
   void makeVisible() throws IOException;

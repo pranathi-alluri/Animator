@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import cs3500.animator.model.AnimationModel;
 import cs3500.animator.model.Keyframe;
 import cs3500.animator.model.Shape;
 import cs3500.animator.model.ViewOnlyAnimationModel;
@@ -43,6 +42,7 @@ public class SimpleAnimationTextualView extends AnimationTextViews {
 
   /**
    * Helper method to get a textual description of the animation.
+   *
    * @param m the model of a simple animation
    * @return string description of the model
    */
@@ -69,8 +69,8 @@ public class SimpleAnimationTextualView extends AnimationTextViews {
     for (ArrayList<Keyframe> keyframes : m.getAllKeyframes()) {
       for (int i = 0; i < keyframes.size() - 1; i++) {
         Keyframe next = keyframes.get(i + 1);
-        int timeInSecStart = (1/tempo * keyframes.get(i).getTime());
-        int timeInSecEnd = (1/tempo * next.getTime());
+        int timeInSecStart = (1 / tempo * keyframes.get(i).getTime());
+        int timeInSecEnd = (1 / tempo * next.getTime());
 
         animation = animation + "From time " + timeInSecStart + " to " + timeInSecEnd + ", " +
                 keyframes.get(i).getDescription(next) + "\n";
