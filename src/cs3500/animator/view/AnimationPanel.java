@@ -52,7 +52,9 @@ public class AnimationPanel extends JPanel {
 
       switch (s.getType()) {
         case OVAL:
-          graphic.fillOval((int) s.getX(), (int) s.getY(), (int) s.getWidth(), (int) s.getHeight());
+          int ovalX = (int)(s.getX() - (s.getWidth()/2));
+          int ovalY = (int)(s.getY() - (s.getHeight()/2));
+          graphic.fillOval(ovalX, ovalY, (int) s.getWidth(), (int) s.getHeight());
           break;
         case RECTANGLE:
           graphic.fillRect((int) s.getX(), (int) s.getY(), (int) s.getWidth(), (int) s.getHeight());
