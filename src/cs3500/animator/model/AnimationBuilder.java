@@ -87,7 +87,7 @@ public class AnimationBuilder implements TweenModelBuilder<AnimationModel> {
     } else if (startOfLife >= endOfLife) {
       throw new IllegalArgumentException("startOfLife must be less than endOfLife");
     }
-    Shape rectangle = new SimpleOval(name, lx, ly, new Color(red, green, blue), height, width);
+    Shape rectangle = new SimpleRectangle(name, lx, ly, new Color(red, green, blue), height, width);
     Keyframe keyframe1 = new SimpleKeyframe(rectangle, startOfLife);
     Keyframe keyframe2 = new SimpleKeyframe(rectangle, endOfLife);
     this.model.addKeyframe(keyframe1);
@@ -97,7 +97,9 @@ public class AnimationBuilder implements TweenModelBuilder<AnimationModel> {
 
   /**
    * Move the specified shape to the given position during the given time
-   * interval.
+   * interval. This function adds two keyframes to the model, one at startTime and one at endTime.
+   * Due to how keyframes work it is possible to use this method to add multiple movements
+   * simultaneously.
    *
    * @param name      the unique name of the shape to be moved
    * @param moveFromX the x-coordinate of the initial position of this shape.
@@ -120,6 +122,9 @@ public class AnimationBuilder implements TweenModelBuilder<AnimationModel> {
     }
     Shape startShape = model.getShapeAtTime(name, startTime);
     Shape endShape = model.getShapeAtTime(name, endTime);
+    if(startShape == null || endShape == null) {
+      throw new IllegalArgumentException("there is not a shape of name name in the animation");
+    }
     Shape newStartShape = SimpleShapeFactory.getShape(startShape.getType(), name, moveFromX,
             moveFromY, startShape.getColor(), startShape.getHeight(), startShape.getWidth());
     Shape newEndShape = SimpleShapeFactory.getShape(endShape.getType(), name, moveToX, moveToY,
@@ -154,6 +159,9 @@ public class AnimationBuilder implements TweenModelBuilder<AnimationModel> {
     }
     Shape startShape = model.getShapeAtTime(name, startTime);
     Shape endShape = model.getShapeAtTime(name, endTime);
+    if(startShape == null || endShape == null) {
+      throw new IllegalArgumentException("there is not a shape of name name in the animation");
+    }
     Shape newStartShape = SimpleShapeFactory.getShape(startShape.getType(), name, startShape.getX(), startShape.getY(), new Color(oldR, oldG, oldB), startShape.getHeight(), startShape.getWidth());
     Shape newEndShape = SimpleShapeFactory.getShape(endShape.getType(), name, endShape.getX(), endShape.getY(), new Color(newR, newG, newB), endShape.getHeight(), endShape.getWidth());
     Keyframe startKeyframe = new SimpleKeyframe(newStartShape, startTime);
@@ -185,6 +193,9 @@ public class AnimationBuilder implements TweenModelBuilder<AnimationModel> {
     }
     Shape startShape = model.getShapeAtTime(name, startTime);
     Shape endShape = model.getShapeAtTime(name, endTime);
+    if(startShape == null || endShape == null) {
+      throw new IllegalArgumentException("there is not a shape of name name in the animation");
+    }
     Shape newStartShape = SimpleShapeFactory.getShape(startShape.getType(), name, startShape.getX(), startShape.getY(), startShape.getColor(), fromSy, fromSx);
     Shape newEndShape = SimpleShapeFactory.getShape(endShape.getType(), name, endShape.getX(), endShape.getY(), endShape.getColor(), toSx, toSy);
     Keyframe startKeyframe = new SimpleKeyframe(newStartShape, startTime);
