@@ -69,6 +69,9 @@ public class SimpleAnimationModel implements AnimationModel {
         shape = keyframes.get(i).interpolate(keyframes.get(i + 1), time);
       }
     }
+    if(keyframes.get(keyframes.size() - 1).getTime() == time) {
+      shape = keyframes.get(keyframes.size() - 1).getShape();
+    }
     return shape;
   }
 

@@ -277,4 +277,9 @@ public class SimpleAnimationModelTest {
   public void testGetShapeNotInModel2() {
     assertNull(this.sam.getShapeAtTime("Triangle", 5));
   }
+
+  @Test
+  public void testGetShapeInModelEnd() {
+    assertEquals(this.greenSquare, this.sam.getShapeAtTime("morphing rectangle",40));
+  }
 }
