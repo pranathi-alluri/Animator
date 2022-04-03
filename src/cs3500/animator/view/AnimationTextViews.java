@@ -26,7 +26,7 @@ public abstract class AnimationTextViews implements SimpleAnimationView {
       throw new IllegalArgumentException("Model can't be null.");
     }
 
-    if(out == null) {
+    if (out == null) {
       throw new IllegalArgumentException("Appendable cannot be null.");
     }
 

@@ -69,7 +69,7 @@ public class SimpleAnimationTextualView extends AnimationTextViews {
     for (ArrayList<Keyframe> keyframes : m.getAllKeyframes()) {
       for (int i = 0; i < keyframes.size() - 1; i++) {
         Keyframe next = keyframes.get(i + 1);
-        float conversion = (1/this.tempo);
+        float conversion = (1 / this.tempo);
         float timeInSecStart = (conversion * keyframes.get(i).getTime());
         float timeInSecEnd = (conversion * next.getTime());
 

@@ -145,7 +145,9 @@ public class SimpleKeyframeTest {
             new Color(100, 100, 200), 10, 30);
     Keyframe kf1 = new SimpleKeyframe(shape1, 0);
     Keyframe kf2 = new SimpleKeyframe(shape2, 40);
-    assertEquals(kf1.getDescription(kf2), "Oval moves from (10.0,10.0) to (50.0,90.0), scales from 10.0x10.0 to 30.0x10.0,  and the color changes from java.awt.Color[r=0,g=200,b=100] to java.awt.Color[r=0,g=200,b=100].");
+    assertEquals(kf1.getDescription(kf2), "Oval moves from (10.0,10.0) to (50.0,90.0)," +
+            " scales from 10.0x10.0 to 30.0x10.0,  and the color changes from" +
+            " java.awt.Color[r=0,g=200,b=100] to java.awt.Color[r=0,g=200,b=100].");
 
   }
 }

@@ -7,6 +7,9 @@ import cs3500.animator.model.Keyframe;
 import cs3500.animator.model.Shape;
 import cs3500.animator.model.ViewOnlyAnimationModel;
 
+/**
+ * Creates an animation in SVG text form.
+ */
 public class SimpleAnimationSVGView extends AnimationTextViews {
 
   /**
@@ -111,7 +114,6 @@ public class SimpleAnimationSVGView extends AnimationTextViews {
             + ticksToMS(k.getTime()) + "\" dur=\""
             + ticksToMS(next.getTime() - k.getTime())
             + "\" attributeName=\"";
-    ;
     String end = "\" fill=\"freeze\" />\n";
 
     if (k.getShape().getX() != next.getShape().getX()) {

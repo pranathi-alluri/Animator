@@ -280,6 +280,6 @@ public class SimpleAnimationModelTest {
 
   @Test
   public void testGetShapeInModelEnd() {
-    assertEquals(this.greenSquare, this.sam.getShapeAtTime("morphing rectangle",40));
+    assertEquals(this.greenSquare, this.sam.getShapeAtTime("morphing rectangle", 40));
   }
 }

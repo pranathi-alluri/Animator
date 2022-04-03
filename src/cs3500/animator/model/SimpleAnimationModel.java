@@ -14,12 +14,18 @@ public class SimpleAnimationModel implements AnimationModel {
   private int width;
   private int height;
 
+  /**
+   * Constructor for SimpleAnimationModel. Sets default width and height to 0
+   */
   public SimpleAnimationModel() {
     this.allKeyframes = new ArrayList<>();
     this.width = 0;
     this.height = 0;
   }
 
+  /**
+   * Constructor for SimpleAnimationModel. Takes in width and height.
+   */
   public SimpleAnimationModel(int width, int height) {
     this.allKeyframes = new ArrayList<>();
     this.width = width;
@@ -57,7 +63,7 @@ public class SimpleAnimationModel implements AnimationModel {
   @Override
   public Shape getShapeAtTime(String name, int time) {
     Shape shape = null;
-    if(getAllKeyframesOfShape(name) == null) {
+    if (getAllKeyframesOfShape(name) == null) {
       return null;
     }
     ArrayList<Keyframe> keyframes = (ArrayList<Keyframe>) getAllKeyframesOfShape(name);
@@ -69,7 +75,7 @@ public class SimpleAnimationModel implements AnimationModel {
         shape = keyframes.get(i).interpolate(keyframes.get(i + 1), time);
       }
     }
-    if(keyframes.get(keyframes.size() - 1).getTime() == time) {
+    if (keyframes.get(keyframes.size() - 1).getTime() == time) {
       shape = keyframes.get(keyframes.size() - 1).getShape();
     }
     return shape;

@@ -3,7 +3,7 @@ import java.io.IOException;
 /**
  * Used for testing a failing appendable.
  */
-public class FailingAppendable implements Appendable{
+public class FailingAppendable implements Appendable {
 
 
   @Override

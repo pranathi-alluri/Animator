@@ -1,28 +1,44 @@
 package cs3500.animator;
 
-import java.awt.*;
+import java.awt.Frame;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-import javax.swing.*;
+import javax.swing.JOptionPane;
 
-import cs3500.animator.io.*;
+import cs3500.animator.io.AnimationFileReader;
 import cs3500.animator.model.AnimationBuilder;
 import cs3500.animator.model.AnimationModel;
 import cs3500.animator.model.SimpleAnimationModel;
 import cs3500.animator.view.AnimationViewFactory;
 import cs3500.animator.view.SimpleAnimationView;
 
+/**
+ * Allows users to create animations from the command line using tags that specify information
+ * about the animation.
+ * -in: name of .txt file that contains a description of the animation
+ * -out: the name destination file, defaults to System.out if not specified
+ * -view: choose between the three kinds of views, svg, text, and visual
+ * -speed: integer tics per second of the speed of the animation
+ */
 public class Main {
+  /**
+   * main method to allow users to create animations.
+   *
+   * @param args -in: name of .txt file that contains a description of the animation
+   *             -out: the name destination file, defaults to System.out if not specified
+   *             -view: choose between the three kinds of views, svg, text, and visual
+   *             -speed: integer tics per second of the speed of the animation
+   */
   public static void main(String[] args) {
     // interprets command line arguments and throws appropriate errors
     String in = null;
     String out = "System.out";
     String viewType = null;
     int speed = 1;
-    for (int i = 0; i < args.length - 1; i++) {
+    for (int i = 0; i < args.length - 1; i += 2) {
       switch (args[i]) {
         case "-in":
           in = args[i + 1];
@@ -42,6 +58,12 @@ public class Main {
             throw new IllegalArgumentException("-speed must be an int");
           }
           break;
+        default:
+          Frame frame = new Frame();
+          JOptionPane.showMessageDialog(frame, "Error: only use the tags" +
+                  " -in, -out, -speed, and -view");
+          throw new IllegalArgumentException("Error: only use the" +
+                  " tags -in, -out, -speed, and -view");
       }
     }
     if (in == null) {
@@ -82,7 +104,7 @@ public class Main {
       System.out.println(appendable);
     } else {
       String extension = ".txt";
-      if(viewType.equals("svg")) {
+      if (viewType.equals("svg")) {
         extension = ".svg";
       }
       try {
