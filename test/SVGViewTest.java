@@ -17,6 +17,7 @@ import cs3500.animator.model.SimpleRectangle;
 import cs3500.animator.model.ViewOnlyAnimationModel;
 import cs3500.animator.view.AnimationTextViews;
 import cs3500.animator.view.SimpleAnimationSVGView;
+import cs3500.animator.view.SimpleAnimationTextualView;
 
 import static org.junit.Assert.assertEquals;
 
@@ -89,6 +90,13 @@ public class SVGViewTest {
   public void testNullAppendable() {
     ViewOnlyAnimationModel m = new SimpleAnimationModel();
     new SimpleAnimationSVGView(m, null, 1);
+  }
+
+  @Test(expected = IllegalStateException.class)
+  public void testFailAppendable() throws IOException {
+    Appendable ap = new FailingAppendable();
+    AnimationTextViews v = new SimpleAnimationSVGView(sam, ap, 1);
+    v.makeVisible();
   }
 
   @Test(expected = IllegalArgumentException.class)

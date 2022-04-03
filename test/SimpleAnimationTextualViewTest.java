@@ -91,6 +91,13 @@ public class SimpleAnimationTextualViewTest {
     new SimpleAnimationTextualView(m, null, 1);
   }
 
+  @Test(expected = IOException.class)
+  public void testFailAppendable() throws IOException {
+    Appendable ap = new FailingAppendable();
+    AnimationTextViews v = new SimpleAnimationTextualView(sam, ap, 1);
+    v.makeVisible();
+  }
+
   @Test(expected = IllegalArgumentException.class)
   public void testNegativeTempo() {
     Appendable ap = new StringBuilder();
