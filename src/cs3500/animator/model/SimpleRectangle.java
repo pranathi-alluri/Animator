@@ -4,6 +4,7 @@ import java.awt.Color;
 
 /**
  * Represents an immutable rectangle in an animation.
+ * x and y represent the top left corner of the rectangle
  */
 public class SimpleRectangle extends SimpleShape implements Shape  {
 
