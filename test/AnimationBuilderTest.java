@@ -131,7 +131,7 @@ public class AnimationBuilderTest {
     Keyframe rect11 = new SimpleKeyframe(new SimpleRectangle("rect1", 10, 10, new Color(0,  0, (float) 0.1), 30, 20), 10);
     Keyframe rect12 = new SimpleKeyframe(new SimpleRectangle("rect1", 10, 10, new Color(0,  0, (float) 0.1), 30, 20), 20);
     Keyframe rect13 = new SimpleKeyframe(new SimpleRectangle("rect1", 20, 20, new Color(0,  0, (float) 0.1), 30, 20), 30);
-    Keyframe rect14 = new SimpleKeyframe(new SimpleRectangle("rect1", 10, 10, new Color(0,  0, (float) 0.1), 30, 20), 50);
+    Keyframe rect14 = new SimpleKeyframe(new SimpleRectangle("rect1", 20, 20, new Color(0,  0, (float) 0.1), 30, 20), 50);
     ArrayList<Keyframe> rect1 = new ArrayList<>();
     rect1.add(rect11);
     rect1.add(rect12);
@@ -147,7 +147,7 @@ public class AnimationBuilderTest {
     Keyframe rect11 = new SimpleKeyframe(new SimpleRectangle("rect1", 10, 10, new Color(0,  0, (float) 0.1), 30, 20), 10);
     Keyframe rect12 = new SimpleKeyframe(new SimpleRectangle("rect1", 10, 10, new Color(0,  0, (float) 0.1), 30, 20), 32);
     Keyframe rect13 = new SimpleKeyframe(new SimpleRectangle("rect1", 10, 10, new Color((float) 0.1,0, 0), 30, 20), 45);
-    Keyframe rect14 = new SimpleKeyframe(new SimpleRectangle("rect1", 10, 10, new Color(0,  0, (float) 0.1), 30, 20), 50);
+    Keyframe rect14 = new SimpleKeyframe(new SimpleRectangle("rect1", 10, 10, new Color((float) 0.1,  0, 0), 30, 20), 50);
     ArrayList<Keyframe> rect1 = new ArrayList<>();
     rect1.add(rect11);
     rect1.add(rect12);
@@ -163,7 +163,7 @@ public class AnimationBuilderTest {
     Keyframe rect11 = new SimpleKeyframe(new SimpleRectangle("rect1", 10, 10, new Color(0,  0, (float) 0.1), 30, 20), 10);
     Keyframe rect12 = new SimpleKeyframe(new SimpleRectangle("rect1", 10, 10, new Color(0,  0, (float) 0.1), 30, 20), 15);
     Keyframe rect13 = new SimpleKeyframe(new SimpleRectangle("rect1", 10, 10, new Color(0,  0, (float) 0.1), 10, 10), 49);
-    Keyframe rect14 = new SimpleKeyframe(new SimpleRectangle("rect1", 10, 10, new Color(0,  0, (float) 0.1), 30, 20), 50);
+    Keyframe rect14 = new SimpleKeyframe(new SimpleRectangle("rect1", 10, 10, new Color(0,  0, (float) 0.1), 10, 10), 50);
     ArrayList<Keyframe> rect1 = new ArrayList<>();
     rect1.add(rect11);
     rect1.add(rect12);

@@ -123,7 +123,7 @@ public class AnimationBuilder implements TweenModelBuilder<AnimationModel> {
     Shape startShape = model.getShapeAtTime(name, startTime);
     Shape endShape = model.getShapeAtTime(name, endTime);
     if(startShape == null || endShape == null) {
-      throw new IllegalArgumentException("there is not a shape of name name in the animation");
+      throw new IllegalArgumentException("there is not a shape of name " + name + " in the animation");
     }
     Shape newStartShape = SimpleShapeFactory.getShape(startShape.getType(), name, moveFromX,
             moveFromY, startShape.getColor(), startShape.getHeight(), startShape.getWidth());
@@ -133,6 +133,8 @@ public class AnimationBuilder implements TweenModelBuilder<AnimationModel> {
     Keyframe endKeyframe = new SimpleKeyframe(newEndShape, endTime);
     model.addKeyframe(startKeyframe);
     model.addKeyframe(endKeyframe);
+    ArrayList<Keyframe> keyframes = (ArrayList<Keyframe>) model.getAllKeyframesOfShape(name);
+    model.addKeyframe(new SimpleKeyframe(keyframes.get(keyframes.size()-2).getShape(), keyframes.get(keyframes.size()-1).getTime()));
     return this;
   }
 
@@ -160,7 +162,7 @@ public class AnimationBuilder implements TweenModelBuilder<AnimationModel> {
     Shape startShape = model.getShapeAtTime(name, startTime);
     Shape endShape = model.getShapeAtTime(name, endTime);
     if(startShape == null || endShape == null) {
-      throw new IllegalArgumentException("there is not a shape of name name in the animation");
+      throw new IllegalArgumentException("there is not a shape of name " + name + " in the animation");
     }
     Shape newStartShape = SimpleShapeFactory.getShape(startShape.getType(), name, startShape.getX(), startShape.getY(), new Color(oldR, oldG, oldB), startShape.getHeight(), startShape.getWidth());
     Shape newEndShape = SimpleShapeFactory.getShape(endShape.getType(), name, endShape.getX(), endShape.getY(), new Color(newR, newG, newB), endShape.getHeight(), endShape.getWidth());
@@ -168,6 +170,8 @@ public class AnimationBuilder implements TweenModelBuilder<AnimationModel> {
     Keyframe endKeyframe = new SimpleKeyframe(newEndShape, endTime);
     model.addKeyframe(startKeyframe);
     model.addKeyframe(endKeyframe);
+    ArrayList<Keyframe> keyframes = (ArrayList<Keyframe>) model.getAllKeyframesOfShape(name);
+    model.addKeyframe(new SimpleKeyframe(keyframes.get(keyframes.size()-2).getShape(), keyframes.get(keyframes.size()-1).getTime()));
     return this;
   }
 
@@ -194,7 +198,7 @@ public class AnimationBuilder implements TweenModelBuilder<AnimationModel> {
     Shape startShape = model.getShapeAtTime(name, startTime);
     Shape endShape = model.getShapeAtTime(name, endTime);
     if(startShape == null || endShape == null) {
-      throw new IllegalArgumentException("there is not a shape of name name in the animation");
+      throw new IllegalArgumentException("there is not a shape of name " + name + " in the animation");
     }
     Shape newStartShape = SimpleShapeFactory.getShape(startShape.getType(), name, startShape.getX(), startShape.getY(), startShape.getColor(), fromSy, fromSx);
     Shape newEndShape = SimpleShapeFactory.getShape(endShape.getType(), name, endShape.getX(), endShape.getY(), endShape.getColor(), toSx, toSy);
@@ -202,6 +206,8 @@ public class AnimationBuilder implements TweenModelBuilder<AnimationModel> {
     Keyframe endKeyframe = new SimpleKeyframe(newEndShape, endTime);
     model.addKeyframe(startKeyframe);
     model.addKeyframe(endKeyframe);
+    ArrayList<Keyframe> keyframes = (ArrayList<Keyframe>) model.getAllKeyframesOfShape(name);
+    model.addKeyframe(new SimpleKeyframe(keyframes.get(keyframes.size()-2).getShape(), keyframes.get(keyframes.size()-1).getTime()));
     return this;
   }
 
