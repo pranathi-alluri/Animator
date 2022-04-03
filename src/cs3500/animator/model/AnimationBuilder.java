@@ -204,13 +204,13 @@ public class AnimationBuilder implements TweenModelBuilder<AnimationModel> {
    * specified target extents. What these extents actually mean depends on the
    * shape, but these are roughly the extents of the box enclosing the shape
    *
-   * @param name
-   * @param fromSx
-   * @param fromSy
-   * @param toSx
-   * @param toSy
-   * @param startTime
-   * @param endTime
+   * @param name      the unique name of the shape whose color is to be changed
+   * @param fromSx    the old x scale
+   * @param fromSy    the old y scale
+   * @param toSx      the new x scale
+   * @param toSy      the new y scale
+   * @param startTime the time tick at which this color change should start
+   * @param endTime   the time tick at which this color change should end
    */
   @Override
   public TweenModelBuilder<AnimationModel> addScaleToChange(String name, float fromSx,

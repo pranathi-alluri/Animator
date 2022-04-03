@@ -25,49 +25,35 @@ import static org.junit.Assert.assertEquals;
  */
 
 public class SimpleAnimationTextualViewTest {
-  private Shape redSquare;
-  private Shape greenRectangle;
-  private Shape greenSquare;
-  private Shape blueCircle1;
-  private Shape blueCircle2;
-  private Keyframe kf11;
-  private Keyframe kf12;
-  private Keyframe kf13;
-  private Keyframe kf21;
-  private Keyframe kf22;
-  private Keyframe kf23;
-  private ArrayList<Keyframe> morphingRectangle;
-  private ArrayList<Keyframe> blueCircle;
-  private ArrayList<ArrayList<Keyframe>> allKeyframes;
   private AnimationModel sam;
 
   @Before
   public void setUp() {
-    redSquare = new SimpleRectangle("morphing rectangle", 20, 20,
+    Shape redSquare = new SimpleRectangle("morphing rectangle", 20, 20,
             new Color(100, 0, 0), 20, 20);
-    greenRectangle = new SimpleRectangle("morphing rectangle", 30, 30,
+    Shape greenRectangle = new SimpleRectangle("morphing rectangle", 30, 30,
             new Color(0, 100, 0), 40, 10);
-    greenSquare = new SimpleRectangle("morphing rectangle", 30, 30,
+    Shape greenSquare = new SimpleRectangle("morphing rectangle", 30, 30,
             new Color(0, 100, 0), 40, 40);
-    blueCircle1 = new SimpleOval("blue circle", 50, 50,
+    Shape blueCircle1 = new SimpleOval("blue circle", 50, 50,
             new Color(0, 0, 100), 10, 10);
-    blueCircle2 = new SimpleOval("blue circle", 70, 60,
+    Shape blueCircle2 = new SimpleOval("blue circle", 70, 60,
             new Color(0, 0, 100), 10, 10);
-    kf11 = new SimpleKeyframe(redSquare, 10);
-    kf12 = new SimpleKeyframe(greenRectangle, 30);
-    kf13 = new SimpleKeyframe(greenSquare, 40);
-    kf21 = new SimpleKeyframe(blueCircle1, 20);
-    kf22 = new SimpleKeyframe(blueCircle1, 30);
-    kf23 = new SimpleKeyframe(blueCircle2, 40);
-    morphingRectangle = new ArrayList<>();
+    Keyframe kf11 = new SimpleKeyframe(redSquare, 10);
+    Keyframe kf12 = new SimpleKeyframe(greenRectangle, 30);
+    Keyframe kf13 = new SimpleKeyframe(greenSquare, 40);
+    Keyframe kf21 = new SimpleKeyframe(blueCircle1, 20);
+    Keyframe kf22 = new SimpleKeyframe(blueCircle1, 30);
+    Keyframe kf23 = new SimpleKeyframe(blueCircle2, 40);
+    ArrayList<Keyframe> morphingRectangle = new ArrayList<>();
     morphingRectangle.add(kf11);
     morphingRectangle.add(kf12);
     morphingRectangle.add(kf13);
-    blueCircle = new ArrayList<>();
+    ArrayList<Keyframe> blueCircle = new ArrayList<>();
     blueCircle.add(kf21);
     blueCircle.add(kf22);
     blueCircle.add(kf23);
-    allKeyframes = new ArrayList<>();
+    ArrayList<ArrayList<Keyframe>> allKeyframes = new ArrayList<>();
     allKeyframes.add(morphingRectangle);
     allKeyframes.add(blueCircle);
     sam = new SimpleAnimationModel();
@@ -104,7 +90,6 @@ public class SimpleAnimationTextualViewTest {
     ViewOnlyAnimationModel m = new SimpleAnimationModel();
     new SimpleAnimationTextualView(m, ap, -1);
   }
-
 
 
   @Test
