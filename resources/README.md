@@ -39,7 +39,35 @@ what ShapeType they are, ShapeType.OVAL and ShapeType.RECTANGLE respectively.
 
 SimpleShapeFactory is a helper class used to use the abstract testing class SimpleShapeTest.
 
-The interface SimpleAnimationTextView defines that the text view of the animation is a user-friendly
-description of all the animations in the model.
+The interface SimpleAnimationView defines the various views of our animation. In this case
+textual, svg, and visual. It houses the method makeVisible(), which runs the animation and provides
+the user with the desired output. 
 
-The class SimpleAnimationView implements a text description of the animation in the model.
+The AnimationTextViews abstract class implements SimpleAnimationView and defines a constructor 
+for textual outputs that take in a ViewOnlyAnimationModel, an appendable to produce output to, 
+and the tempo in ticks per seconds. It includes getText(), which returns the state and animation 
+as a String. 
+
+
+The class SimpleAnimationTextualView extends AnimationTextViews and implements a text description 
+of the animation in the model in a user-friendly readable format.
+
+The class SimpleAnimationSVGView extends AnimationTextViews and implements an XML description of the 
+animation that can be rendered by various browsers. 
+
+The class SimpleAnimationVisualView extends JFrame and implements SimpleAnimationView and uses 
+Java Swing to implement the drawing of the shapes and moves in an Animation. Similarly to other
+views it takes in a model to animation, and tempo. However, unlike text models it takes in an 
+AnimationPanel to display the animation and a Timer to run the animation. Since this is the only 
+visual view currently we have it in its own class, but in the future if we would like to implement 
+other visual views we can easily create an abstract class and have this implement it, similar to 
+the text views, or even just extend this class, depending on the needs of the other visual view.
+
+The class Animation Panel extends JPanel and takes in a model and the current tick to implement the 
+actually drawing of all shapes currently on the screen. It holds the actual simple animation 
+visualization. 
+
+AnimationViewFactory is a helper class used to create the right instance of the three views based 
+on input from the client. It takes in the view type as a String: "text", "visual", "svg", and a 
+tempo in ticks per second. 
+
