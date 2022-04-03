@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import cs3500.animator.model.AnimationBuilder;
 import cs3500.animator.model.AnimationModel;
 import cs3500.animator.model.Keyframe;
-import cs3500.animator.model.Shape;
 import cs3500.animator.model.SimpleAnimationModel;
 import cs3500.animator.model.SimpleKeyframe;
 import cs3500.animator.model.SimpleOval;

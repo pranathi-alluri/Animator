@@ -1,9 +1,6 @@
 
 package cs3500.animator.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Represents an animation in the form of lists of keyframes.
  */

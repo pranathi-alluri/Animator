@@ -1,0 +1,55 @@
+Create RECTANGLE named disk3 with center at (145.0,240.0), width 110.0 and height 30.0
+Create RECTANGLE named disk1 with center at (190.0,180.0), width 20.0 and height 30.0
+Create RECTANGLE named disk2 with center at (167.5,210.0), width 65.0 and height 30.0
+
+From time 1.0 to 25.0, disk1 stays put at (190.0,180.0), stays size 20.0x30.0,  and the color stays java.awt.Color[r=0,g=50,b=90].
+From time 25.0 to 35.0, disk1 moves from (190.0,180.0) to (190.0,50.0), stays size 20.0x30.0,  and the color stays java.awt.Color[r=0,g=50,b=90].
+From time 35.0 to 36.0, disk1 stays put at (190.0,50.0), stays size 20.0x30.0,  and the color stays java.awt.Color[r=0,g=50,b=90].
+From time 36.0 to 46.0, disk1 moves from (190.0,50.0) to (490.0,50.0), stays size 20.0x30.0,  and the color stays java.awt.Color[r=0,g=50,b=90].
+From time 46.0 to 47.0, disk1 stays put at (490.0,50.0), stays size 20.0x30.0,  and the color stays java.awt.Color[r=0,g=50,b=90].
+From time 47.0 to 57.0, disk1 moves from (490.0,50.0) to (490.0,240.0), stays size 20.0x30.0,  and the color stays java.awt.Color[r=0,g=50,b=90].
+From time 57.0 to 89.0, disk1 stays put at (490.0,240.0), stays size 20.0x30.0,  and the color stays java.awt.Color[r=0,g=50,b=90].
+From time 89.0 to 99.0, disk1 moves from (490.0,240.0) to (490.0,50.0), stays size 20.0x30.0,  and the color stays java.awt.Color[r=0,g=50,b=90].
+From time 99.0 to 100.0, disk1 stays put at (490.0,50.0), stays size 20.0x30.0,  and the color stays java.awt.Color[r=0,g=50,b=90].
+From time 100.0 to 110.0, disk1 moves from (490.0,50.0) to (340.0,50.0), stays size 20.0x30.0,  and the color stays java.awt.Color[r=0,g=50,b=90].
+From time 110.0 to 111.0, disk1 stays put at (340.0,50.0), stays size 20.0x30.0,  and the color stays java.awt.Color[r=0,g=50,b=90].
+From time 111.0 to 121.0, disk1 moves from (340.0,50.0) to (340.0,210.0), stays size 20.0x30.0,  and the color stays java.awt.Color[r=0,g=50,b=90].
+From time 121.0 to 153.0, disk1 stays put at (340.0,210.0), stays size 20.0x30.0,  and the color stays java.awt.Color[r=0,g=50,b=90].
+From time 153.0 to 163.0, disk1 moves from (340.0,210.0) to (340.0,50.0), stays size 20.0x30.0,  and the color stays java.awt.Color[r=0,g=50,b=90].
+From time 163.0 to 164.0, disk1 stays put at (340.0,50.0), stays size 20.0x30.0,  and the color stays java.awt.Color[r=0,g=50,b=90].
+From time 164.0 to 174.0, disk1 moves from (340.0,50.0) to (190.0,50.0), stays size 20.0x30.0,  and the color stays java.awt.Color[r=0,g=50,b=90].
+From time 174.0 to 175.0, disk1 stays put at (190.0,50.0), stays size 20.0x30.0,  and the color stays java.awt.Color[r=0,g=50,b=90].
+From time 175.0 to 185.0, disk1 moves from (190.0,50.0) to (190.0,240.0), stays size 20.0x30.0,  and the color stays java.awt.Color[r=0,g=50,b=90].
+From time 185.0 to 217.0, disk1 stays put at (190.0,240.0), stays size 20.0x30.0,  and the color stays java.awt.Color[r=0,g=50,b=90].
+From time 217.0 to 227.0, disk1 moves from (190.0,240.0) to (190.0,50.0), stays size 20.0x30.0,  and the color stays java.awt.Color[r=0,g=50,b=90].
+From time 227.0 to 228.0, disk1 stays put at (190.0,50.0), stays size 20.0x30.0,  and the color stays java.awt.Color[r=0,g=50,b=90].
+From time 228.0 to 238.0, disk1 moves from (190.0,50.0) to (490.0,50.0), stays size 20.0x30.0,  and the color stays java.awt.Color[r=0,g=50,b=90].
+From time 238.0 to 239.0, disk1 stays put at (490.0,50.0), stays size 20.0x30.0,  and the color stays java.awt.Color[r=0,g=50,b=90].
+From time 239.0 to 249.0, disk1 moves from (490.0,50.0) to (490.0,180.0), stays size 20.0x30.0,  and the color stays java.awt.Color[r=0,g=50,b=90].
+From time 249.0 to 257.0, disk1 stays put at (490.0,180.0), stays size 20.0x30.0,  and the color changes from java.awt.Color[r=0,g=50,b=90] to java.awt.Color[r=0,g=50,b=90].
+From time 257.0 to 302.0, disk1 stays put at (490.0,180.0), stays size 20.0x30.0,  and the color stays java.awt.Color[r=0,g=255,b=0].
+
+From time 1.0 to 57.0, disk2 stays put at (167.5,210.0), stays size 65.0x30.0,  and the color stays java.awt.Color[r=7,g=247,b=42].
+From time 57.0 to 67.0, disk2 moves from (167.5,210.0) to (167.5,50.0), stays size 65.0x30.0,  and the color stays java.awt.Color[r=7,g=247,b=42].
+From time 67.0 to 68.0, disk2 stays put at (167.5,50.0), stays size 65.0x30.0,  and the color stays java.awt.Color[r=7,g=247,b=42].
+From time 68.0 to 78.0, disk2 moves from (167.5,50.0) to (317.5,50.0), stays size 65.0x30.0,  and the color stays java.awt.Color[r=7,g=247,b=42].
+From time 78.0 to 79.0, disk2 stays put at (317.5,50.0), stays size 65.0x30.0,  and the color stays java.awt.Color[r=7,g=247,b=42].
+From time 79.0 to 89.0, disk2 moves from (317.5,50.0) to (317.5,240.0), stays size 65.0x30.0,  and the color stays java.awt.Color[r=7,g=247,b=42].
+From time 89.0 to 185.0, disk2 stays put at (317.5,240.0), stays size 65.0x30.0,  and the color stays java.awt.Color[r=7,g=247,b=42].
+From time 185.0 to 195.0, disk2 moves from (317.5,240.0) to (317.5,50.0), stays size 65.0x30.0,  and the color stays java.awt.Color[r=7,g=247,b=42].
+From time 195.0 to 196.0, disk2 stays put at (317.5,50.0), stays size 65.0x30.0,  and the color stays java.awt.Color[r=7,g=247,b=42].
+From time 196.0 to 206.0, disk2 moves from (317.5,50.0) to (467.5,50.0), stays size 65.0x30.0,  and the color stays java.awt.Color[r=7,g=247,b=42].
+From time 206.0 to 207.0, disk2 stays put at (467.5,50.0), stays size 65.0x30.0,  and the color stays java.awt.Color[r=7,g=247,b=42].
+From time 207.0 to 217.0, disk2 moves from (467.5,50.0) to (467.5,210.0), stays size 65.0x30.0,  and the color stays java.awt.Color[r=7,g=247,b=42].
+From time 217.0 to 225.0, disk2 stays put at (467.5,210.0), stays size 65.0x30.0,  and the color changes from java.awt.Color[r=7,g=247,b=42] to java.awt.Color[r=7,g=247,b=42].
+From time 225.0 to 302.0, disk2 stays put at (467.5,210.0), stays size 65.0x30.0,  and the color stays java.awt.Color[r=0,g=255,b=0].
+
+From time 1.0 to 121.0, disk3 stays put at (145.0,240.0), stays size 110.0x30.0,  and the color stays java.awt.Color[r=11,g=46,b=175].
+From time 121.0 to 131.0, disk3 moves from (145.0,240.0) to (145.0,50.0), stays size 110.0x30.0,  and the color stays java.awt.Color[r=11,g=46,b=175].
+From time 131.0 to 132.0, disk3 stays put at (145.0,50.0), stays size 110.0x30.0,  and the color stays java.awt.Color[r=11,g=46,b=175].
+From time 132.0 to 142.0, disk3 moves from (145.0,50.0) to (445.0,50.0), stays size 110.0x30.0,  and the color stays java.awt.Color[r=11,g=46,b=175].
+From time 142.0 to 143.0, disk3 stays put at (445.0,50.0), stays size 110.0x30.0,  and the color stays java.awt.Color[r=11,g=46,b=175].
+From time 143.0 to 153.0, disk3 moves from (445.0,50.0) to (445.0,240.0), stays size 110.0x30.0,  and the color stays java.awt.Color[r=11,g=46,b=175].
+From time 153.0 to 161.0, disk3 stays put at (445.0,240.0), stays size 110.0x30.0,  and the color changes from java.awt.Color[r=11,g=46,b=175] to java.awt.Color[r=11,g=46,b=175].
+From time 161.0 to 302.0, disk3 stays put at (445.0,240.0), stays size 110.0x30.0,  and the color stays java.awt.Color[r=0,g=255,b=0].
+

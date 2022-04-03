@@ -3,7 +3,6 @@ import java.awt.*;
 import java.util.ArrayList;
 
 import cs3500.animator.io.TweenModelBuilder;
-import cs3500.animator.io.AnimationFileReader;
 
 public class AnimationBuilder implements TweenModelBuilder<AnimationModel> {
 
