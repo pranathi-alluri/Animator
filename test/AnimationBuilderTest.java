@@ -106,8 +106,8 @@ public class AnimationBuilderTest {
 
   @Test
   public void testAddOval() {
-    Keyframe oval11 = new SimpleKeyframe(new SimpleOval("oval1", 10, 10, new Color(0, (float) 0.1, 0), 30, 20), 10);
-    Keyframe oval12 = new SimpleKeyframe(new SimpleOval("oval1", 10, 10, new Color(0, (float) 0.1, 0), 30, 20), 50);
+    Keyframe oval11 = new SimpleKeyframe(new SimpleOval("oval1", 10, 10, new Color(0, (float) 0.1, 0), 60, 40), 10);
+    Keyframe oval12 = new SimpleKeyframe(new SimpleOval("oval1", 10, 10, new Color(0, (float) 0.1, 0), 60, 40), 50);
     ArrayList<Keyframe> oval1 = new ArrayList<>();
     oval1.add(oval11);
     oval1.add(oval12);

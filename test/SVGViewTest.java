@@ -139,7 +139,7 @@ public class SVGViewTest {
             + "<animate attributeType=\"xml\" begin=\"30000.0ms\" dur=\"10000.0ms\" "
             + "attributeName=\"cx\" from=\"50.0\" to=\"70.0\" fill=\"freeze\" />\n"
             + "<animate attributeType=\"xml\" begin=\"30000.0ms\" dur=\"10000.0ms\" "
-            + "attributeName=\"cy\" from=\"50.0\" to=\"70.0\" fill=\"freeze\" />\n"
+            + "attributeName=\"cy\" from=\"50.0\" to=\"60.0\" fill=\"freeze\" />\n"
             + "</ellipse>\n"
             + "</svg>", v.getText());
   }
@@ -175,7 +175,7 @@ public class SVGViewTest {
             + "<animate attributeType=\"xml\" begin=\"3000.0ms\" dur=\"1000.0ms\" "
             + "attributeName=\"cx\" from=\"50.0\" to=\"70.0\" fill=\"freeze\" />\n"
             + "<animate attributeType=\"xml\" begin=\"3000.0ms\" dur=\"1000.0ms\" "
-            + "attributeName=\"cy\" from=\"50.0\" to=\"70.0\" fill=\"freeze\" />\n"
+            + "attributeName=\"cy\" from=\"50.0\" to=\"60.0\" fill=\"freeze\" />\n"
             + "</ellipse>\n"
             + "</svg>", v.getText());
   }

@@ -55,7 +55,7 @@ public class AnimationBuilder implements TweenModelBuilder<AnimationModel> {
     } else if (startOfLife >= endOfLife) {
       throw new IllegalArgumentException("startOfLife must be less than endOfLife");
     }
-    Shape oval = new SimpleOval(name, cx, cy, new Color(red, green, blue), yRadius, xRadius);
+    Shape oval = new SimpleOval(name, cx, cy, new Color(red, green, blue), 2*yRadius, 2*xRadius);
     Keyframe keyframe1 = new SimpleKeyframe(oval, startOfLife);
     Keyframe keyframe2 = new SimpleKeyframe(oval, endOfLife);
     this.model.addKeyframe(keyframe1);
