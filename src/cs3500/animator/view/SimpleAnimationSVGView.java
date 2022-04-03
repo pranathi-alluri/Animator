@@ -129,8 +129,8 @@ public class SimpleAnimationSVGView extends AnimationTextViews {
         output.append(begin).append("y\" from=\"").append(k.getShape().getY())
                 .append("\" to=\"").append(next.getShape().getY()).append(end);
       } else if (type.equals("ellipse")) {
-        output.append(begin).append("cy\" from=\"").append(k.getShape().getX())
-                .append("\" to=\"").append(next.getShape().getX()).append(end);
+        output.append(begin).append("cy\" from=\"").append(k.getShape().getY())
+                .append("\" to=\"").append(next.getShape().getY()).append(end);
       }
     }
 
