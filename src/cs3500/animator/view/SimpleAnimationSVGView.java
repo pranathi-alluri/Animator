@@ -12,7 +12,7 @@ public class SimpleAnimationSVGView extends AnimationTextViews {
   /**
    * Constructor for Animation SVG view.
    */
-  public SimpleAnimationSVGView(ViewOnlyAnimationModel model, Appendable out, int tempo) {
+  public SimpleAnimationSVGView(ViewOnlyAnimationModel model, Appendable out, float tempo) {
     super(model, out, tempo);
   }
 
@@ -80,6 +80,7 @@ public class SimpleAnimationSVGView extends AnimationTextViews {
       default:
         return output.toString();
     }
+
     output.append("<animate attributeType=\"xml\" begin=\"").append(ticksToMS(k.get(0).getTime()))
             .append("\" dur=\"1ms\" attributeName=\"visibility\" from=\"hidden\" to=\"visible\" " +
                     "fill=\"freeze\" />\n");

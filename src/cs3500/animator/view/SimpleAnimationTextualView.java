@@ -18,7 +18,7 @@ public class SimpleAnimationTextualView extends AnimationTextViews {
   /**
    * Constructs Animation text View.
    */
-  public SimpleAnimationTextualView(ViewOnlyAnimationModel model, Appendable out, int tempo) {
+  public SimpleAnimationTextualView(ViewOnlyAnimationModel model, Appendable out, float tempo) {
     super(model, out, tempo);
   }
 
@@ -69,8 +69,9 @@ public class SimpleAnimationTextualView extends AnimationTextViews {
     for (ArrayList<Keyframe> keyframes : m.getAllKeyframes()) {
       for (int i = 0; i < keyframes.size() - 1; i++) {
         Keyframe next = keyframes.get(i + 1);
-        int timeInSecStart = (1 / tempo * keyframes.get(i).getTime());
-        int timeInSecEnd = (1 / tempo * next.getTime());
+        float conversion = (1/this.tempo);
+        float timeInSecStart = (conversion * keyframes.get(i).getTime());
+        float timeInSecEnd = (conversion * next.getTime());
 
         animation = animation + "From time " + timeInSecStart + " to " + timeInSecEnd + ", " +
                 keyframes.get(i).getDescription(next) + "\n";
