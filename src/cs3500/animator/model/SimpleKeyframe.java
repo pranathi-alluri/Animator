@@ -95,7 +95,6 @@ public class SimpleKeyframe implements Keyframe {
   @Override
   public String getDescription(Keyframe other) {
     Shape shapeEnd = other.getShape();
-    int timeEnd = other.getTime();
     String move;
     String scale;
     String color;
@@ -119,7 +118,7 @@ public class SimpleKeyframe implements Keyframe {
       color = " and the color changes from " + this.shape.getColor().toString() + " to "
               + this.shape.getColor() + ".";
     }
-    return "From time " + this.time + " to " + other.getTime() + ", " + move + scale + color;
+    return move + scale + color;
   }
 
   @Override

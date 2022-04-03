@@ -10,7 +10,7 @@ import cs3500.animator.model.SimpleAnimationModel;
 import cs3500.animator.model.SimpleKeyframe;
 import cs3500.animator.model.SimpleOval;
 import cs3500.animator.model.SimpleRectangle;
-import cs3500.animator.view.SimpleAnimationTextView;
+import cs3500.animator.view.SimpleAnimationTextualView;
 import cs3500.animator.view.SimpleAnimationView;
 
 import static org.junit.Assert.assertEquals;
@@ -61,12 +61,12 @@ public class SimpleAnimationViewTest {
     sam.addKeyframe(kf12);
     sam.addKeyframe(kf22);
     sam.addKeyframe(kf23);
-    this.sav = new SimpleAnimationTextView(sam);
+    this.sav = new SimpleAnimationTextualView(sam);
   }
 
   @Test(expected = IllegalArgumentException.class)
   public void testNullModel() {
-    new SimpleAnimationTextView(null);
+    new SimpleAnimationTextualView(null);
   }
 
   @Test
