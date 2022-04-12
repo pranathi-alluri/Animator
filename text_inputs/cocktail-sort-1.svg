@@ -1,0 +1,39 @@
+<svg width="400" height="700" version="1.1"
+    xmlns="http://www.w3.org/2000/svg">
+<rect id="bar5" x="50.0" y="400.0" width="50.0" height="250.0" fill="rgb(128,128,128)" visibility="hidden" >
+<animate attributeType="xml" begin="10.0ms" dur="1ms" attributeName="visibility" from="hidden" to="visible" fill="freeze" />
+<animate attributeType="xml" begin="500.0ms" dur="500.0ms" attributeName="x" from="50.0" to="100.0" fill="freeze" />
+<animate attributeType="xml" begin="3000.0ms" dur="500.0ms" attributeName="x" from="100.0" to="150.0" fill="freeze" />
+<animate attributeType="xml" begin="5000.0ms" dur="500.0ms" attributeName="x" from="150.0" to="200.0" fill="freeze" />
+</rect>
+<rect id="bar2" x="100.0" y="550.0" width="50.0" height="100.0" fill="rgb(128,128,128)" visibility="hidden" >
+<animate attributeType="xml" begin="10.0ms" dur="1ms" attributeName="visibility" from="hidden" to="visible" fill="freeze" />
+<animate attributeType="xml" begin="500.0ms" dur="500.0ms" attributeName="x" from="100.0" to="50.0" fill="freeze" />
+<animate attributeType="xml" begin="3500.0ms" dur="500.0ms" attributeName="x" from="50.0" to="100.0" fill="freeze" />
+</rect>
+<rect id="bar8" x="150.0" y="250.0" width="50.0" height="400.0" fill="rgb(128,128,128)" visibility="hidden" >
+<animate attributeType="xml" begin="10.0ms" dur="1ms" attributeName="visibility" from="hidden" to="visible" fill="freeze" />
+<animate attributeType="xml" begin="2500.0ms" dur="500.0ms" attributeName="x" from="150.0" to="200.0" fill="freeze" />
+<animate attributeType="xml" begin="4500.0ms" dur="500.0ms" attributeName="x" from="200.0" to="250.0" fill="freeze" />
+</rect>
+<rect id="bar12" x="200.0" y="50.0" width="50.0" height="600.0" fill="rgb(128,128,128)" visibility="hidden" >
+<animate attributeType="xml" begin="10.0ms" dur="1ms" attributeName="visibility" from="hidden" to="visible" fill="freeze" />
+<animate attributeType="xml" begin="1000.0ms" dur="500.0ms" attributeName="x" from="200.0" to="250.0" fill="freeze" />
+<animate attributeType="xml" begin="1500.0ms" dur="500.0ms" attributeName="x" from="250.0" to="300.0" fill="freeze" />
+</rect>
+<rect id="bar3" x="250.0" y="500.0" width="50.0" height="150.0" fill="rgb(128,128,128)" visibility="hidden" >
+<animate attributeType="xml" begin="10.0ms" dur="1ms" attributeName="visibility" from="hidden" to="visible" fill="freeze" />
+<animate attributeType="xml" begin="1000.0ms" dur="500.0ms" attributeName="x" from="250.0" to="200.0" fill="freeze" />
+<animate attributeType="xml" begin="2000.0ms" dur="500.0ms" attributeName="x" from="200.0" to="250.0" fill="freeze" />
+<animate attributeType="xml" begin="4500.0ms" dur="500.0ms" attributeName="x" from="250.0" to="200.0" fill="freeze" />
+<animate attributeType="xml" begin="5000.0ms" dur="500.0ms" attributeName="x" from="200.0" to="150.0" fill="freeze" />
+</rect>
+<rect id="bar1" x="300.0" y="600.0" width="50.0" height="50.0" fill="rgb(128,128,128)" visibility="hidden" >
+<animate attributeType="xml" begin="10.0ms" dur="1ms" attributeName="visibility" from="hidden" to="visible" fill="freeze" />
+<animate attributeType="xml" begin="1500.0ms" dur="500.0ms" attributeName="x" from="300.0" to="250.0" fill="freeze" />
+<animate attributeType="xml" begin="2000.0ms" dur="500.0ms" attributeName="x" from="250.0" to="200.0" fill="freeze" />
+<animate attributeType="xml" begin="2500.0ms" dur="500.0ms" attributeName="x" from="200.0" to="150.0" fill="freeze" />
+<animate attributeType="xml" begin="3000.0ms" dur="500.0ms" attributeName="x" from="150.0" to="100.0" fill="freeze" />
+<animate attributeType="xml" begin="3500.0ms" dur="500.0ms" attributeName="x" from="100.0" to="50.0" fill="freeze" />
+</rect>
+</svg>
