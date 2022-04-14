@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 import cs3500.animator.io.AnimationFileReader;
 import cs3500.animator.model.AnimationBuilder;
 import cs3500.animator.model.AnimationModel;
+import cs3500.animator.model.HashmapAnimationModel;
 import cs3500.animator.model.SimpleAnimationModel;
 import cs3500.animator.view.AnimationViewFactory;
 import cs3500.animator.view.SimpleAnimationView;
@@ -79,7 +80,7 @@ public class Main {
     // uses command line arguments to build the model
     AnimationBuilder builder = new AnimationBuilder();
     AnimationFileReader fileReader = new AnimationFileReader();
-    AnimationModel model = new SimpleAnimationModel();
+    AnimationModel model = new HashmapAnimationModel();
     try {
       model = fileReader.readFile(in, builder);
     } catch (FileNotFoundException e) {
