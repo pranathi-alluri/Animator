@@ -43,7 +43,4 @@ public abstract class AnimationTextViews implements SimpleAnimationView {
   public String getText() {
     return this.out.toString();
   }
-
-  ;
-
 }

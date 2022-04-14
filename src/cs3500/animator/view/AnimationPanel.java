@@ -41,6 +41,10 @@ public class AnimationPanel extends JPanel {
     this.currentTick = tick;
   }
 
+  public int getCurrentTick() {
+    return this.currentTick;
+  }
+
   @Override
   public void paintComponent(Graphics g) {
     super.paintComponent(g);

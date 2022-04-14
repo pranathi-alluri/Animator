@@ -25,6 +25,8 @@ public class AnimationViewFactory {
         return new SimpleAnimationVisualView(model, tempo);
       case "svg":
         return new SimpleAnimationSVGView(model, ap, tempo);
+      case "interactive":
+        return new SimpleAnimationCompositeView(model, tempo);
       default:
         throw new IllegalArgumentException("Not a valid view type.");
     }

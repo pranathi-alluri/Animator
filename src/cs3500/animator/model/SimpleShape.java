@@ -53,7 +53,7 @@ public abstract class SimpleShape implements Shape {
   }
 
   /**
-   * Gets the X position of the center of this shape on the coordinate grid.
+   * Gets the X position of this shape on the coordinate grid.
    *
    * @return the x of this shape
    */
@@ -63,7 +63,7 @@ public abstract class SimpleShape implements Shape {
   }
 
   /**
-   * Gets the Y position of the center of this shape on the coordinate grid.
+   * Gets the Y position of this shape on the coordinate grid.
    *
    * @return the y of this shape
    */
