@@ -74,7 +74,7 @@ public class Main {
       throw new IllegalArgumentException("you must specify -in");
     } else if (viewType == null) {
       Frame frame = new Frame();
-      JOptionPane.showMessageDialog(frame, "Error: must specify input text file");
+      JOptionPane.showMessageDialog(frame, "Error: must specify view type");
       throw new IllegalArgumentException("you must specify -view");
     }
 

@@ -96,3 +96,7 @@ visualization.
 AnimationViewFactory is a helper class used to create the right instance of the three views based 
 on input from the client. It takes in the view type as a String: "text", "visual", "svg", and a 
 tempo in ticks per second. 
+
+BouncingBasketBallAnimation uses physics to simulate a bouncing ball in a small room and create an animation of it.
+
+CocktailShakerSortAnimation visualizes how cocktail shaker sort works for different lists of integers.

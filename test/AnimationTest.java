@@ -3,13 +3,14 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import cs3500.animator.animations.BouncingBasketBallAnimation;
 import cs3500.animator.animations.CocktailShakerSortAnimation;
 
 import static org.junit.Assert.assertEquals;
 
-public class CocktailShakerSortAnimationTest {
+public class AnimationTest {
   @Test
-  public void testToString() {
+  public void testCocktailShakerSortToString() {
     ArrayList<Integer> nums = new ArrayList<>(Arrays.asList(5, 2, 8, 12, 3, 1));
     CocktailShakerSortAnimation c = new CocktailShakerSortAnimation(nums);
     assertEquals("canvas 400 700\n" +

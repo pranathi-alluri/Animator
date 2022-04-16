@@ -1,8 +1,11 @@
 package cs3500.animator.animations;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
-
+/**
+ * Creates animation to display how cocktail shaker sort works.
+ */
 public class CocktailShakerSortAnimation {
 
   private final ArrayList<Integer> nums;
@@ -83,7 +86,7 @@ public class CocktailShakerSortAnimation {
       Integer[] previousNums = allNums.get(i-1);
       Integer[] currentNums = allNums.get(i);
       for(int j = 0; j < length; j++) {
-        if(previousNums[j] != currentNums[j]) {
+        if(!Objects.equals(previousNums[j], currentNums[j])) {
           output.append("move name bar").append(previousNums[j]).append(" moveto ").append(boarder + j*barWidth).append(" ").append(boarder + (max-previousNums[j])*barHeight)
                   .append(" ").append(boarder + (j+1)*barWidth).append(" ").append(boarder + (max-previousNums[j])*barHeight).append(" from ").append(i*moveTics).append(" to ").append((i+1)*moveTics).append("\n");
           output.append("move name bar").append(currentNums[j]).append(" moveto ").append(boarder + (j+1)*barWidth).append(" ").append(boarder + (max-currentNums[j])*barHeight)
