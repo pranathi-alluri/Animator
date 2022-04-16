@@ -27,7 +27,7 @@ public class BouncingBasketBallAnimation {
     double previousYPos = yPos;
 
     int deltaI = 1;
-    for(int i = 1; i < end; i+=deltaI) {
+    for (int i = 1; i < end; i += deltaI) {
       xPos += xVelocity;
       yPos += yVelocity;
       yVelocity += gravity;
@@ -37,7 +37,7 @@ public class BouncingBasketBallAnimation {
       if (yPos >= 500 - radius - 10) {
         yVelocity = -0.9 * yVelocity;
       }
-      output.append("move name ball moveto ").append((int) previousXPos).append(" ").append((int) previousYPos).append(" ").append((int) xPos).append(" ").append((int) yPos).append(" from ").append(i).append(" to ").append(i+deltaI).append("\n");
+      output.append("move name ball moveto ").append((int) previousXPos).append(" ").append((int) previousYPos).append(" ").append((int) xPos).append(" ").append((int) yPos).append(" from ").append(i).append(" to ").append(i + deltaI).append("\n");
       previousXPos = xPos;
       previousYPos = yPos;
     }

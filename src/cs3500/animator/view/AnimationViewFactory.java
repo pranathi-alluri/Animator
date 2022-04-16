@@ -8,7 +8,7 @@ import cs3500.animator.model.ViewOnlyAnimationModel;
 public class AnimationViewFactory {
 
   /**
-   * Creates a new view of the given type.
+   * Creates a new text view of the given type.
    *
    * @param viewType the type of view to create.
    * @param model    the model that is being animated.
@@ -28,6 +28,14 @@ public class AnimationViewFactory {
     }
   }
 
+  /**
+   * Returns a new visual view of the given type.
+   *
+   * @param viewType the view of visual
+   * @param model    the model to animated
+   * @param tempo    the speed
+   * @return a Visaul view of the animation.
+   */
   public static AnimationVisual getVisualView(String viewType, ViewOnlyAnimationModel model,
                                               int tempo) {
     switch (viewType) {

@@ -8,13 +8,23 @@ import javax.swing.*;
 import cs3500.animator.model.ViewOnlyAnimationModel;
 import cs3500.animator.view.AnimationText;
 import cs3500.animator.view.AnimationViewFactory;
-import cs3500.animator.view.SimpleAnimationView;
 
-public class SimpleTextController implements Controller{
+/**
+ * The controller to run text views of the model.
+ */
+public class SimpleTextController implements Controller {
   private ViewOnlyAnimationModel model;
   private int tempo;
   private AnimationText view;
 
+  /**
+   * The constructor for the textual views of the controller.
+   *
+   * @param model the model being animated.
+   * @param tempo the speed.
+   * @param ap    the output.
+   * @param type  the view type.
+   */
   public SimpleTextController(ViewOnlyAnimationModel model, int tempo, Appendable ap,
                               String type) {
     if (model == null) {

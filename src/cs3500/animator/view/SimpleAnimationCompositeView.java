@@ -1,23 +1,24 @@
 package cs3500.animator.view;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 
 import javax.swing.*;
 
-import cs3500.animator.model.Keyframe;
 import cs3500.animator.model.ViewOnlyAnimationModel;
 
-public class SimpleAnimationCompositeView extends SimpleAnimationVisualView{
+/**
+ * The class that creates an interactive view to be played.
+ */
+public class SimpleAnimationCompositeView extends SimpleAnimationVisualView {
 
   private JCheckBox loopSwitch;
   private JButton start;
   private JButton pause;
   private JButton restart;
   private JButton speed;
+
   /**
    * Constructor for the Simple animation visual view.
    *
@@ -62,7 +63,7 @@ public class SimpleAnimationCompositeView extends SimpleAnimationVisualView{
     buttonPanel.add(loopPanel);
 
 
-    buttonPanel.setSize(new Dimension(100,800));
+    buttonPanel.setSize(new Dimension(100, 800));
     this.add(buttonPanel, BorderLayout.EAST);
 
   }
@@ -77,9 +78,8 @@ public class SimpleAnimationCompositeView extends SimpleAnimationVisualView{
   }
 
 
-
   @Override
-  public void loop(int finalTick){
+  public void loop(int finalTick) {
     if (loopSwitch.isSelected() && panel.getCurrentTick() > finalTick) {
       panel.setTick(0);
     }
