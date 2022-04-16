@@ -1,8 +1,6 @@
 # OODHW4
 Design changes to model from previous assignment: 
-Added getters and setters for width and height of the frame.
-Added getShapeAtTime 
-Various bug fixes
+Added HashmapModel
 
 Our animation model uses lists of keyframes to represent animations of shapes.
 In the SimpleAnimationModel class, the ArrayList(ArrayList(Keyframe)) allKeyframes represents all
@@ -96,6 +94,19 @@ visualization.
 AnimationViewFactory is a helper class used to create the right instance of the three views based 
 on input from the client. It takes in the view type as a String: "text", "visual", "svg", and a 
 tempo in ticks per second. 
+
+SimpleAnimationCompositeView is a class that adds functionality for the view to be able to be restarted,
+have the speed by changed, be paused and be resumed.
+
+Controller is an interface that defines that controllers for our animations should have a start method.
+
+VisualController is an interface that defines that controllers for our animations should have a way to start the timer.
+
+SimpleInteractiveController is a controller for SimpleAnimationCompositeView that controls when the view should start, stop, restart, and change speed.
+
+SimpleTextController is a controller that controls text views of our animations.
+
+SimpleVisualController is a controller that controls visual views of our animations.
 
 BouncingBasketBallAnimation uses physics to simulate a bouncing ball in a small room and create an animation of it.
 
