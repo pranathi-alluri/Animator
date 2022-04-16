@@ -1,5 +1,8 @@
 package cs3500.animator.view;
 
+/**
+ * The interface to deal with textual views.
+ */
 public interface AnimationText extends SimpleAnimationView {
 
   /**

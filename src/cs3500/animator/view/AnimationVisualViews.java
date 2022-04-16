@@ -6,6 +6,9 @@ import javax.swing.*;
 
 import cs3500.animator.model.ViewOnlyAnimationModel;
 
+/**
+ * An abstract class that creates a common panel of a visual view.
+ */
 public abstract class AnimationVisualViews extends JFrame implements AnimationVisual {
   protected ViewOnlyAnimationModel model;
   protected AnimationPanel panel;
@@ -50,20 +53,16 @@ public abstract class AnimationVisualViews extends JFrame implements AnimationVi
     this.setVisible(true);
   }
 
-  @Override
   /**
    * Draw the animation at the given tick.
-   *
    * @param tick the current tick.
    */
+  @Override
   public void onTick(int tick) {
     panel.setTick(tick);
     panel.revalidate();
     panel.repaint();
   }
-
-
-
 
 
 }

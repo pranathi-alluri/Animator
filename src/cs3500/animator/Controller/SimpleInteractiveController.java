@@ -9,15 +9,26 @@ import javax.swing.*;
 import cs3500.animator.model.Keyframe;
 import cs3500.animator.model.ViewOnlyAnimationModel;
 
+/**
+ * The controller for an interactive animation, that is able to receive inputs when the buttons are
+ * clicked.
+ */
 public class SimpleInteractiveController extends SimpleVisualController implements ActionListener {
 
+  /**
+   * The constructor for the interactive controller.
+   *
+   * @param model the model to animate
+   * @param tempo the speed
+   * @param type  the type of view
+   */
   public SimpleInteractiveController(ViewOnlyAnimationModel model, int tempo, String type) {
     super(model, tempo, type);
     view.setListener(this);
   }
 
   @Override
-  public void startTimer(){
+  public void startTimer() {
     int delay = 1000 / tempo;
     int FINAL_TICK = finalTick();
     ActionListener listener = new ActionListener() {
@@ -36,6 +47,11 @@ public class SimpleInteractiveController extends SimpleVisualController implemen
 
   }
 
+  /**
+   * Get's the last tick of the keyframe .
+   *
+   * @return the final tick value
+   */
   private int finalTick() {
     int lastTick = 0;
     for (ArrayList<Keyframe> keyframe : model.getAllKeyframes()) {
@@ -72,6 +88,7 @@ public class SimpleInteractiveController extends SimpleVisualController implemen
                   "WARNING", JOptionPane.ERROR_MESSAGE);
         }
         break;
+
       default:
         throw new IllegalArgumentException("Not a supported function");
     }
