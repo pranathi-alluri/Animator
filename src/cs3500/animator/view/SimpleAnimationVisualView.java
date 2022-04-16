@@ -20,26 +20,25 @@ public class SimpleAnimationVisualView extends AnimationVisualViews {
    * @param tempo the tempo in ticks per second.
    */
   public SimpleAnimationVisualView(ViewOnlyAnimationModel model, int tempo) {
+
     super(model, tempo);
+    this.pack();
+  }
+
+
+  @Override
+  public void loop(int last) {
+    throw new IllegalArgumentException("Looping is not available for this view.");
   }
 
   @Override
-  public void makeVisible() {
-    this.setVisible(true);
-
-    int time = 1000 / this.tempo;
-    ActionListener listener = new ActionListener() {
-      private int tick = 0;
-
-      @Override
-      public void actionPerformed(ActionEvent e) {
-        onTick(tick);
-        tick++;
-      }
-    };
-   timer = new Timer(time, listener);
-   timer.start();
+  public void restart() {
+    throw new IllegalArgumentException("This function is not available for this view");
   }
 
+  @Override
+  public void setListener(ActionListener a) {
+    throw new IllegalArgumentException("This view is not interactive.");
 
+  }
 }

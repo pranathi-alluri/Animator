@@ -16,19 +16,28 @@ public class AnimationViewFactory {
    * @param tempo    the tempo in ticks per second provided by the user.
    * @return a new view.
    */
-  public static SimpleAnimationView getView(String viewType, ViewOnlyAnimationModel model,
-                                            Appendable ap, int tempo) {
+  public static AnimationText getTextView(String viewType, ViewOnlyAnimationModel model,
+                                          Appendable ap, int tempo) {
     switch (viewType) {
       case "text":
         return new SimpleAnimationTextualView(model, ap, tempo);
-      case "visual":
-        return new SimpleAnimationVisualView(model, tempo);
       case "svg":
         return new SimpleAnimationSVGView(model, ap, tempo);
+      default:
+        throw new IllegalArgumentException("Not a valid view type.");
+    }
+  }
+
+  public static AnimationVisual getVisualView(String viewType, ViewOnlyAnimationModel model,
+                                              int tempo) {
+    switch (viewType) {
+      case "visual":
+        return new SimpleAnimationVisualView(model, tempo);
       case "interactive":
         return new SimpleAnimationCompositeView(model, tempo);
       default:
         throw new IllegalArgumentException("Not a valid view type.");
     }
+
   }
 }

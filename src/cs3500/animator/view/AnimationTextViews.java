@@ -6,7 +6,7 @@ import cs3500.animator.model.ViewOnlyAnimationModel;
  * Represents an abstract class for text views, taking in input from a model and appending it to
  * an appendable.
  */
-public abstract class AnimationTextViews implements SimpleAnimationView {
+public abstract class AnimationTextViews implements AnimationText {
   protected final ViewOnlyAnimationModel model;
   protected Appendable out;
   protected final float tempo;

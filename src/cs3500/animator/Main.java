@@ -8,13 +8,14 @@ import java.nio.file.Paths;
 
 import javax.swing.JOptionPane;
 
+import cs3500.animator.Controller.Controller;
+import cs3500.animator.Controller.SimpleInteractiveController;
+import cs3500.animator.Controller.SimpleTextController;
+import cs3500.animator.Controller.SimpleVisualController;
 import cs3500.animator.io.AnimationFileReader;
 import cs3500.animator.model.AnimationBuilder;
 import cs3500.animator.model.AnimationModel;
 import cs3500.animator.model.HashmapAnimationModel;
-import cs3500.animator.model.SimpleAnimationModel;
-import cs3500.animator.view.AnimationViewFactory;
-import cs3500.animator.view.SimpleAnimationView;
 
 /**
  * Allows users to create animations from the command line using tags that specify information
@@ -90,15 +91,17 @@ public class Main {
     }
 
     // uses command line arguments to build the view
+    Controller controller = null;
     Appendable appendable = new StringBuilder();
-    SimpleAnimationView view = AnimationViewFactory.getView(viewType, model, appendable, speed);
-    try {
-      view.makeVisible();
-    } catch (IOException e) {
-      Frame frame = new Frame();
-      JOptionPane.showMessageDialog(frame, "Error: was unable to create view");
-      e.printStackTrace();
+    if (viewType.equals("text") || viewType.equals("svg")){
+      controller = new SimpleTextController(model, speed, appendable, viewType);
+    } else if (viewType.equals("visual")){
+      controller = new SimpleVisualController(model, speed, viewType);
+    } else if (viewType.equals("interactive")) {
+      controller = new SimpleInteractiveController(model, speed, viewType);
     }
+    controller.start();
+
 
     // output the view to the appropriate location
     if (out.equals("System.out")) {

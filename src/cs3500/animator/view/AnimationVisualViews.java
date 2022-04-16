@@ -6,11 +6,10 @@ import javax.swing.*;
 
 import cs3500.animator.model.ViewOnlyAnimationModel;
 
-public abstract class AnimationVisualViews extends JFrame implements SimpleAnimationView {
+public abstract class AnimationVisualViews extends JFrame implements AnimationVisual {
   protected ViewOnlyAnimationModel model;
   protected AnimationPanel panel;
   protected int tempo;
-  protected Timer timer;
 
   /**
    * Constructor for the Simple animation visual view.
@@ -44,9 +43,14 @@ public abstract class AnimationVisualViews extends JFrame implements SimpleAnima
             ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 
     this.add(scroll, BorderLayout.CENTER);
-    this.pack();
   }
 
+  @Override
+  public void makeVisible() {
+    this.setVisible(true);
+  }
+
+  @Override
   /**
    * Draw the animation at the given tick.
    *
@@ -57,6 +61,7 @@ public abstract class AnimationVisualViews extends JFrame implements SimpleAnima
     panel.revalidate();
     panel.repaint();
   }
+
 
 
 

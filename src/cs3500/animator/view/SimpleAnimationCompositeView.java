@@ -1,19 +1,23 @@
 package cs3500.animator.view;
 
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+
 
 import javax.swing.*;
 
 import cs3500.animator.model.Keyframe;
 import cs3500.animator.model.ViewOnlyAnimationModel;
 
-public class SimpleAnimationCompositeView extends AnimationVisualViews
-        implements ActionListener {
+public class SimpleAnimationCompositeView extends SimpleAnimationVisualView{
 
-  private JCheckBoxMenuItem loop;
-
+  private JCheckBox loopSwitch;
+  private JButton start;
+  private JButton pause;
+  private JButton restart;
+  private JButton speed;
   /**
    * Constructor for the Simple animation visual view.
    *
@@ -23,108 +27,67 @@ public class SimpleAnimationCompositeView extends AnimationVisualViews
   public SimpleAnimationCompositeView(ViewOnlyAnimationModel model, int tempo) {
     super(model, tempo);
 
-    JMenuBar menu = new JMenuBar();
+    // buttons
+    Box buttonPanel = new Box(BoxLayout.Y_AXIS);
 
-    JMenuItem start = new JMenuItem("Start");
-    start.setActionCommand("start");
-    start.addActionListener(this);
-    menu.add(start);
+    // start button
+    start = new JButton("Play");
+    start.setActionCommand("play");
+    buttonPanel.add(start);
 
-    JMenuItem pause = new JMenuItem("Pause");
+    // pause button
+    pause = new JButton("Pause");
     pause.setActionCommand("pause");
-    pause.addActionListener(this);
-    menu.add(pause);
+    buttonPanel.add(pause);
 
-    JMenuItem restart = new JMenuItem("Restart");
+    // restart button
+    restart = new JButton("Restart");
     restart.setActionCommand("restart");
-    restart.addActionListener(this);
-    menu.add(restart);
+    buttonPanel.add(restart);
 
-    JMenuItem speed = new JMenuItem("Change speed");
+
+    // speed
+    speed = new JButton("Change Speed ");
     speed.setActionCommand("speed");
-    speed.addActionListener(this);
-    menu.add(speed);
+    buttonPanel.add(speed);
 
-    loop = new JCheckBoxMenuItem("Loop");
-    loop.setSelected(false);
-    loop.addActionListener(this);
-    menu.add(loop);
+    // begin the loop button
+    JLabel loop = new JLabel("loop:");
+    loopSwitch = new JCheckBox();
+    loopSwitch.setSelected(false);
+    loopSwitch.setActionCommand("loop");
+    JPanel loopPanel = new JPanel();
+    loopPanel.add(loop);
+    loopPanel.add(loopSwitch);
+    buttonPanel.add(loopPanel);
 
-    this.pack();
+
+    buttonPanel.setSize(new Dimension(100,800));
+    this.add(buttonPanel, BorderLayout.EAST);
+
   }
 
   @Override
-  public void makeVisible() {
-    this.setVisible(true);
-    final int FINAL_TICK = finalTick();
-
-    // Calculate the delay of the timer based on the given tempo.
-    int delay = 1000 / tempo;
-    ActionListener listener = new ActionListener() {
-
-      @Override
-      public void actionPerformed(ActionEvent e) {
-        onTick(panel.getCurrentTick() + 1);
-
-        if (loop.getState() && panel.getCurrentTick() > FINAL_TICK) {
-          panel.setTick(0);
-        }
-      }
-    };
-    timer = new Timer(delay, listener);
-    timer.start();
+  public void setListener(ActionListener event) {
+    start.addActionListener(event);
+    pause.addActionListener(event);
+    restart.addActionListener(event);
+    speed.addActionListener(event);
+    loopSwitch.addActionListener(event);
   }
 
-//  private int finalTick() {
-//    int lastTick = 0;
-//    for(ArrayList<Keyframe> keyframe : model.getAllKeyframes()){
-//      for(Keyframe k : keyframe) {
-//        if(k.getTime() > lastTick) {
-//          lastTick = k.getTime();
-//        }
-//      }
-//    }
-//    return lastTick;
-//  }
 
-  private int finalTick() {
-    int lastTick = 0;
-    for (ArrayList<Keyframe> keyframe : model.getAllKeyframes()) {
-      if (keyframe.get(keyframe.size() - 1).getTime() > lastTick) {
-        lastTick = keyframe.get(keyframe.size() - 1).getTime();
-      }
+
+  @Override
+  public void loop(int finalTick){
+    if (loopSwitch.isSelected() && panel.getCurrentTick() > finalTick) {
+      panel.setTick(0);
     }
-    return lastTick;
   }
 
   @Override
-  public void actionPerformed(ActionEvent e) {
-    switch (e.getActionCommand()) {
-      case "start":
-        timer.start();
-        break;
-      case "pause":
-        timer.stop();
-        break;
-      case "restart":
-        panel.setTick(0);
-        break;
-      case "speed":
-        try {
-          tempo = 1000 / Integer.parseInt(JOptionPane.showInputDialog("Please input new speed."));
-          if (tempo >= 1) {
-            timer.setDelay(tempo);
-          } else {
-            JOptionPane.showMessageDialog(null, "Invalid speed.", "WARNING", JOptionPane
-                    .ERROR_MESSAGE);
-          }
-        } catch (NumberFormatException fe) {
-          JOptionPane.showMessageDialog(null, "Invalid number format.", "WARNING", JOptionPane
-                  .ERROR_MESSAGE);
-        }
-        break;
-      default:
-        throw new IllegalArgumentException("Not a supported function");
-    }
+  public void restart() {
+    panel.setTick(0);
   }
+
 }
