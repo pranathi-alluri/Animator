@@ -1,3 +1,5 @@
+#Animator Design 
+
 Our animation model uses lists of keyframes to represent animations of shapes. In the SimpleAnimationModel class, the ArrayList(ArrayList(Keyframe)) allKeyframes represents all the animations, and each ArrayList(Keyframe) represents one shapes full movement during the fullduration of the animation. This is done using linear interpolation between Keyframes to fill in the gaps of the movements and changes of the shapes.
 
 For example, if there is a keyframe of a red (100, 0, 0) square (20x20) at position (20, 20) at time 10 tics, and a second keyframe of a green (0, 100, 0) rectangle (40x10) at position (30, 30) at time 30 tics. If you wanted to know what this shape looks like at time 20 tics,you can use linear interpolation between the keyframes to find that it would be a green-red (50, 50, 0)rectangle (30x15) at position (25, 25). This is the core of how our animation model know where all of its shapes are at all times.
