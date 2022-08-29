@@ -1,38 +1,50 @@
 # Simple Animator
-Our animation model uses lists of keyframes to represent animations of shapes.
-In the SimpleAnimationModel class, the ArrayList(ArrayList(Keyframe)) allKeyframes represents all the animations, and each ArrayList(Keyframe) represents one shapes full movement during the fullduration of the animation. This is done using linear interpolation between Keyframes
-to fill in the gaps of the movements and changes of the shapes.
+The animator was developed in Java using MVC architecture to easily create and play simple 2D animations from shapes. Specifically, the animation model uses lists of keyframes to represent the movement of each shape during the full duration of the animation, done using linear interpolation. 
 
-Java Swing 
+For more details on the design process and the functionality of the model, controller, and views visit the "Design" page. 
 
 
-Application that can easily create and play simple 2D animations from shapes 
-created using mvc architecture 
+### Running Application
+The JAR files (OODHW4.jar) under the "resources" folder are used to run the program, while the main(String[] args) method in cs3500.animator package acts as the entry point, and takes in inputs as command line arguments:
 
-Displays animation in textual view 
-visual view
-svg animation view 
-- using existing animation frameworks (ex: Flash) 
-- xml based format to descirbe image and animations 
-interactive view = playback controls
-  - start
-  - pause
-  - resume
-  - restart 
-  - looping
-  - increase or decrease speed 
+<ul>
+<li> Ex: java -jar OODHW4.jar -in buildings.txt -view interactive -speed 50  -out out.svg
+<ul>
+<li> -jar "name-of-jar-file": JAR file to run the program
+<li> -in "input-file": Name of animation file to be run 
+<li> -view "type-of-view": One of the four types of view to display the animation in
+<ul>
+<li> Text view: Describes the animation in a readable text
+<li> Visual view: Draws and displays the animation
+<li> SVG view: XML based format to describe images and animations 
+<ul>
+<li> Allows for existing animation frameworks to be used to display the animation (ex: Flash)
+</ul>
+<li> Interactive view: Includes playback controls 
+<ul>
+<li> Start
+<li> Pause
+<li> Restart
+<li> Loop
+<li> Change speed 
+</ul>
+</ul>
+<li> -out "output-file": Where the output should be displayed
+<ul>
+<li> If not specified the default is System.out
+</ul>
+<li> -speed "rate": The speed at which the animation should be displayed in ticks-per-second
+<ul>
+<li> Default is 1 tick per second
+<li> Must be an integer 
+</ul>
+</ul>
+</ul>
 
 
-main(String[] args) method in cs3500.animator package = entry point for the program 
-take in inputs as command-line arguements 
+### Acknowledgments  
+Developed alongside Joel Willick for CS3500, Object Oriented Design, at Northeastern University. 
 
-- "name of animation" "type of view" "where-output-sjow-go" "interger-ticks-per-second"
-- in and view are mandatory 
-- in any order 
-- run program through provided jar file 
-
-
-Example aniamtions you can run 
 
 
 
