@@ -5,10 +5,11 @@ For more details on the design process and the functionality of the model, contr
 
 
 ### Running Application
-The JAR files (OODHW4.jar) under the "resources" folder are used to run the program, while the main(String[] args) method in cs3500.animator package acts as the entry point, and takes in inputs as command line arguments:
+The JAR files (OODHW4.jar) under the "resources" folder are used to run the program, while the main(String[] args) method in cs3500.animator package acts as the entry point, and takes in inputs as command line arguments. For example:
 
-<ul>
-<li> Ex: java -jar OODHW4.jar -in buildings.txt -view interactive -speed 50  -out out.svg
+```bash
+java -jar OODHW4.jar -in buildings.txt -view interactive -speed 50  -out out.svg
+```
 <ul>
 <li> -jar "name-of-jar-file": JAR file to run the program
 <li> -in "input-file": Name of animation file to be run 
@@ -37,7 +38,6 @@ The JAR files (OODHW4.jar) under the "resources" folder are used to run the prog
 <ul>
 <li> Default is 1 tick per second
 <li> Must be an integer 
-</ul>
 </ul>
 </ul>
 
